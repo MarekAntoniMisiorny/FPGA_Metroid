@@ -5,8 +5,6 @@ module level0_data
 #(
     parameter integer MAX_PLATFORMS = 8,
     parameter integer MAX_DOORS     = 4,
-    parameter [10:0] SCR_W          = 11'd30,
-    parameter [10:0] SCR_H          = 11'd20,
     parameter [10:0] PLAYER_H       = 11'd4
 )
 (
@@ -37,28 +35,36 @@ module level0_data
     output wire [10:0] SPAWN_BOTTOM_Y
 );
 
-    localparam [10:0] LEVEL_W_LOCAL = SCR_W * 2;
-    localparam [10:0] LEVEL_H_LOCAL = SCR_H;
+    // =========================================================
+    // STA£Y ROZMIAR ŒWIATA LEVELU 0
+    // niezale¿ny od SCR_W / SCR_H
+    // =========================================================
+    localparam [10:0] LEVEL_W_LOCAL = 11'd60;
+    localparam [10:0] LEVEL_H_LOCAL = 11'd20;
 
+    // =========================================================
+    // Geometria levelu 0 w world-space
+    // =========================================================
     localparam [10:0] FLOOR_X = 11'd0;
-    localparam [10:0] FLOOR_Y = LEVEL_H_LOCAL - (LEVEL_H_LOCAL / 6);
-    localparam [10:0] FLOOR_W = LEVEL_W_LOCAL;
-    localparam [10:0] FLOOR_H = (LEVEL_H_LOCAL / 6);
+    localparam [10:0] FLOOR_Y = 11'd17;
+    localparam [10:0] FLOOR_W = 11'd60;
+    localparam [10:0] FLOOR_H = 11'd3;
 
-    localparam [10:0] P0_X = LEVEL_W_LOCAL / 5;
-    localparam [10:0] P0_Y = LEVEL_H_LOCAL / 2;
-    localparam [10:0] P0_W = SCR_W / 4;
+    localparam [10:0] P0_X = 11'd10;
+    localparam [10:0] P0_Y = 11'd10;
+    localparam [10:0] P0_W = 11'd7;
     localparam [10:0] P0_H = 11'd2;
 
-    localparam [10:0] P1_X = (LEVEL_W_LOCAL * 3) / 4;
-    localparam [10:0] P1_Y = LEVEL_H_LOCAL / 3;
-    localparam [10:0] P1_W = SCR_W / 5;
+    localparam [10:0] P1_X = 11'd42;
+    localparam [10:0] P1_Y = 11'd6;
+    localparam [10:0] P1_W = 11'd6;
     localparam [10:0] P1_H = 11'd2;
 
-    localparam [10:0] D0_X = LEVEL_W_LOCAL - (SCR_W / 10);
-    localparam [10:0] D0_Y = FLOOR_Y - (LEVEL_H_LOCAL / 6);
-    localparam [10:0] D0_W = (SCR_W / 12);
-    localparam [10:0] D0_H = (LEVEL_H_LOCAL / 6);
+    // drzwi na koñcu levelu
+    localparam [10:0] D0_X = 11'd56;
+    localparam [10:0] D0_Y = 11'd14;
+    localparam [10:0] D0_W = 11'd2;
+    localparam [10:0] D0_H = 11'd3;
 
     assign LEVEL_W = LEVEL_W_LOCAL;
     assign LEVEL_H = LEVEL_H_LOCAL;
@@ -122,19 +128,22 @@ module level0_data
 
     assign DOOR_TARGET_ENTRY_BUS = {
         {(MAX_DOORS-1)*2{1'b0}},
-        2'd0
+        2'd0   // wejœcie z lewej w levelu 1
     };
 
+    // =========================================================
+    // Spawny
+    // =========================================================
     assign SPAWN_LEFT_X   = 11'd2;
     assign SPAWN_LEFT_Y   = FLOOR_Y - PLAYER_H;
 
-    assign SPAWN_RIGHT_X  = LEVEL_W_LOCAL - (SCR_W / 8);
+    assign SPAWN_RIGHT_X  = 11'd54;
     assign SPAWN_RIGHT_Y  = FLOOR_Y - PLAYER_H;
 
-    assign SPAWN_TOP_X    = LEVEL_W_LOCAL / 2;
+    assign SPAWN_TOP_X    = 11'd30;
     assign SPAWN_TOP_Y    = 11'd2;
 
-    assign SPAWN_BOTTOM_X = LEVEL_W_LOCAL / 2;
+    assign SPAWN_BOTTOM_X = 11'd30;
     assign SPAWN_BOTTOM_Y = FLOOR_Y - PLAYER_H;
 
 endmodule

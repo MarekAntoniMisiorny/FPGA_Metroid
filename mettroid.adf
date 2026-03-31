@@ -93,6 +93,7 @@ communication/pong_top.v=-1
 communication/uart_rx.v=-1
 communication/uart_tx.v=-1
 communication/vo_phy_ddr.v=-1
+game\player\Movement/player_move.v=-1
 [Files.Data]
 .\src\pong_main.v=Verilog Source Code
 .\src\wave.asdb=Accelerated Waveform File
@@ -133,6 +134,7 @@ communication/vo_phy_ddr.v=-1
 .\src\communication\uart_rx.v=Verilog Source Code
 .\src\communication\uart_tx.v=Verilog Source Code
 .\src\communication\vo_phy_ddr.v=Verilog Source Code
+.\src\game\player\Movement\player_move.v=Verilog Source Code
 [folders]
 name0=ALINT-PRO Workspaces
 directory0=c:\Users\marek\Documents\Studia\Magisterskie\ostatni_semestr\Projektowanie__uk³adów_FPGA\Projekt_v\mettroid\

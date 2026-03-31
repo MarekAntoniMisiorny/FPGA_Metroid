@@ -44,8 +44,8 @@ integer key_down_tmp;
 
   integer x, y;
 
-  localparam [10:0] SCR_W = 30;
-  localparam [10:0] SCR_H = 20;
+  localparam [10:0] SCR_W = 60;
+  localparam [10:0] SCR_H = 40;
   localparam integer FRAME_WRITE_DIV = 2; // zapis co 2 klatki
 
   wire [10:0] x_hcnt;

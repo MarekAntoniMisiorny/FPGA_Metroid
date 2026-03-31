@@ -5,8 +5,6 @@ module level_data_mux
 #(
     parameter integer MAX_PLATFORMS = 8,
     parameter integer MAX_DOORS     = 4,
-    parameter [10:0] SCR_W          = 11'd30,
-    parameter [10:0] SCR_H          = 11'd20,
     parameter [10:0] PLAYER_H       = 11'd4
 )
 (
@@ -59,74 +57,70 @@ module level_data_mux
     #(
         .MAX_PLATFORMS(MAX_PLATFORMS),
         .MAX_DOORS    (MAX_DOORS),
-        .SCR_W        (SCR_W),
-        .SCR_H        (SCR_H),
         .PLAYER_H     (PLAYER_H)
     )
     u_level0_data
     (
-        .LEVEL_W              (l0_level_w),
-        .LEVEL_H              (l0_level_h),
+        .LEVEL_W               (l0_level_w),
+        .LEVEL_H               (l0_level_h),
 
-        .PLAT_COUNT           (l0_count),
-        .PLAT_X_BUS           (l0_x),
-        .PLAT_Y_BUS           (l0_y),
-        .PLAT_W_BUS           (l0_w),
-        .PLAT_H_BUS           (l0_h),
+        .PLAT_COUNT            (l0_count),
+        .PLAT_X_BUS            (l0_x),
+        .PLAT_Y_BUS            (l0_y),
+        .PLAT_W_BUS            (l0_w),
+        .PLAT_H_BUS            (l0_h),
 
-        .DOOR_COUNT           (l0_dcount),
-        .DOOR_X_BUS           (l0_dx),
-        .DOOR_Y_BUS           (l0_dy),
-        .DOOR_W_BUS           (l0_dw),
-        .DOOR_H_BUS           (l0_dh),
-        .DOOR_TARGET_LEVEL_BUS(l0_dtl),
-        .DOOR_TARGET_ENTRY_BUS(l0_dte),
+        .DOOR_COUNT            (l0_dcount),
+        .DOOR_X_BUS            (l0_dx),
+        .DOOR_Y_BUS            (l0_dy),
+        .DOOR_W_BUS            (l0_dw),
+        .DOOR_H_BUS            (l0_dh),
+        .DOOR_TARGET_LEVEL_BUS (l0_dtl),
+        .DOOR_TARGET_ENTRY_BUS (l0_dte),
 
-        .SPAWN_LEFT_X         (l0_slx),
-        .SPAWN_LEFT_Y         (l0_sly),
-        .SPAWN_RIGHT_X        (l0_srx),
-        .SPAWN_RIGHT_Y        (l0_sry),
-        .SPAWN_TOP_X          (l0_stx),
-        .SPAWN_TOP_Y          (l0_sty),
-        .SPAWN_BOTTOM_X       (l0_sbx),
-        .SPAWN_BOTTOM_Y       (l0_sby)
+        .SPAWN_LEFT_X          (l0_slx),
+        .SPAWN_LEFT_Y          (l0_sly),
+        .SPAWN_RIGHT_X         (l0_srx),
+        .SPAWN_RIGHT_Y         (l0_sry),
+        .SPAWN_TOP_X           (l0_stx),
+        .SPAWN_TOP_Y           (l0_sty),
+        .SPAWN_BOTTOM_X        (l0_sbx),
+        .SPAWN_BOTTOM_Y        (l0_sby)
     );
 
     level1_data
     #(
         .MAX_PLATFORMS(MAX_PLATFORMS),
         .MAX_DOORS    (MAX_DOORS),
-        .SCR_W        (SCR_W),
-        .SCR_H        (SCR_H),
         .PLAYER_H     (PLAYER_H)
     )
     u_level1_data
     (
-        .LEVEL_W              (l1_level_w),
-        .LEVEL_H              (l1_level_h),
+        .LEVEL_W               (l1_level_w),
+        .LEVEL_H               (l1_level_h),
 
-        .PLAT_COUNT           (l1_count),
-        .PLAT_X_BUS           (l1_x),
-        .PLAT_Y_BUS           (l1_y),
-        .PLAT_W_BUS           (l1_w),
-        .PLAT_H_BUS           (l1_h),
+        .PLAT_COUNT            (l1_count),
+        .PLAT_X_BUS            (l1_x),
+        .PLAT_Y_BUS            (l1_y),
+        .PLAT_W_BUS            (l1_w),
+        .PLAT_H_BUS            (l1_h),
 
-        .DOOR_COUNT           (l1_dcount),
-        .DOOR_X_BUS           (l1_dx),
-        .DOOR_Y_BUS           (l1_dy),
-        .DOOR_W_BUS           (l1_dw),
-        .DOOR_H_BUS           (l1_dh),
-        .DOOR_TARGET_LEVEL_BUS(l1_dtl),
-        .DOOR_TARGET_ENTRY_BUS(l1_dte),
+        .DOOR_COUNT            (l1_dcount),
+        .DOOR_X_BUS            (l1_dx),
+        .DOOR_Y_BUS            (l1_dy),
+        .DOOR_W_BUS            (l1_dw),
+        .DOOR_H_BUS            (l1_dh),
+        .DOOR_TARGET_LEVEL_BUS (l1_dtl),
+        .DOOR_TARGET_ENTRY_BUS (l1_dte),
 
-        .SPAWN_LEFT_X         (l1_slx),
-        .SPAWN_LEFT_Y         (l1_sly),
-        .SPAWN_RIGHT_X        (l1_srx),
-        .SPAWN_RIGHT_Y        (l1_sry),
-        .SPAWN_TOP_X          (l1_stx),
-        .SPAWN_TOP_Y          (l1_sty),
-        .SPAWN_BOTTOM_X       (l1_sbx),
-        .SPAWN_BOTTOM_Y       (l1_sby)
+        .SPAWN_LEFT_X          (l1_slx),
+        .SPAWN_LEFT_Y          (l1_sly),
+        .SPAWN_RIGHT_X         (l1_srx),
+        .SPAWN_RIGHT_Y         (l1_sry),
+        .SPAWN_TOP_X           (l1_stx),
+        .SPAWN_TOP_Y           (l1_sty),
+        .SPAWN_BOTTOM_X        (l1_sbx),
+        .SPAWN_BOTTOM_Y        (l1_sby)
     );
 
     always @(*) begin
