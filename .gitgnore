@@ -1,0 +1,31 @@
+# build / śmieci
+compile/
+log/
+
+# pliki tymczasowe FPGA
+*.ini
+*.cfg
+*.order
+*.aws
+*.duser
+*.wsp
+*.wsw
+*.adf
+*.set
+
+# exe
+*.exe
+
+# python cache
+__pycache__/
+*.pyc
+
+# dane runtime (symulacja)
+dane.txt
+keys.txt
+sim_time.txt
+size.txt
+
+# system
+.DS_Store
+Thumbs.db

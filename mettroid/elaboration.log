@@ -1,0 +1,43 @@
+Active-HDL 15.0.261.9132 2026-03-31 14:18:46
+
+Elaboration top modules:
+Verilog Module                tb
+SystemVerilog Package         UnitScopePackage_81
+
+
+---------------------------------------------------------------------------------------------------
+Verilog Module                 | Library  | Info | Compiler Version          | Compilation Options
+---------------------------------------------------------------------------------------------------
+tb                             | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+vga_sync_gen                   | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+delay                          | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+pong_main                      | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+level_manager                  | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+level_data_mux                 | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+game_engine                    | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+render_main                    | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+level0_data                    | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+level1_data                    | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+game_tick                      | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+player_move                    | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+player_on_ground_list          | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+player_jump                    | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+player_gravity                 | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+player_platform_collision_list | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+check_boundaries               | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+door_collision_list            | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+bg_painter                     | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+rect_painter                   | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+---------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+SystemVerilog Package          | Library  | Info | Compiler Version          | Compilation Options
+---------------------------------------------------------------------------------------------------
+UnitScopePackage_81            | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+---------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------
+Library                        | Comment
+---------------------------------------------------------------------------------------------------
+mettroid                       | None
+---------------------------------------------------------------------------------------------------

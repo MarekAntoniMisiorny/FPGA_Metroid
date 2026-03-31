@@ -1,0 +1,13 @@
+[Version]
+Version=15.0
+[Designs]
+mettroid=mettroid.adf
+[Settings]
+Active=mettroid
+[Expand]
+mettroid=1
+[Browser]
+sort=order
+mode=none
+[Order]
+order=1

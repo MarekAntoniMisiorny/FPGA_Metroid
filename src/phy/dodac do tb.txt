@@ -1,0 +1,28 @@
+ //rozmiar piksela
+  localparam pixel = 15;
+
+  reg stb_wysw;
+  integer file, i;
+
+  //utworzenie pliku size.txt z aktualna rozdzielczoscia
+  initial begin
+          file = $fopen("size.txt", "w+");
+          $fwrite(file, "%d\n%d\n%d\n", SCR_W, SCR_H, pixel);
+          $fclose(file);
+  end
+
+  //zapis danych z VIDMEM do pliku dane.txt
+  always@(posedge CLK75_0 or posedge RST)
+  	if(RST) stb_wysw <= 1;
+	else begin
+    if (x_hcnt == SCR_W) stb_wysw <= 1;
+		if (stb_wysw) begin
+		  file = $fopen("dane.txt", "w+");
+          for (i = 0; i < SCR_W*SCR_H; i = i+1) begin
+			  if (0 <= VIDMEM[i] <= 7) $fwrite(file, "%d\n", VIDMEM[i]);
+			  else $fwrite(file, "x\n");
+          end
+          $fclose(file);
+          stb_wysw <= 0;
+		end	
+	end
