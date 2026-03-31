@@ -33,9 +33,6 @@ module pong_main
     output wire [3:0]  LED
 );
 
-    // =========================================================
-    // sterowanie
-    // =========================================================
     wire key_left;
     wire key_right;
     wire key_up;
@@ -46,9 +43,6 @@ module pong_main
     assign key_up    = EncB_QB;
     assign key_down  = EncB_QA;
 
-    // =========================================================
-    // level manager <-> game engine
-    // =========================================================
     wire        respawn_req;
     wire        respawn_ack;
 
@@ -56,17 +50,14 @@ module pong_main
     wire [3:0]  door_target_level;
     wire [1:0]  door_target_entry;
 
-    // =========================================================
-    // level manager outputs
-    // =========================================================
     wire [3:0]  level_id;
     wire [1:0]  entry_id;
     wire [10:0] spawn_x;
     wire [10:0] spawn_y;
 
-    // =========================================================
-    // level data outputs
-    // =========================================================
+    wire [10:0] level_w;
+    wire [10:0] level_h;
+
     wire [7:0]  plat_count;
     wire [MAX_PLATFORMS*11-1:0] plat_x_bus;
     wire [MAX_PLATFORMS*11-1:0] plat_y_bus;
@@ -90,39 +81,33 @@ module pong_main
     wire [10:0] spawn_bottom_x;
     wire [10:0] spawn_bottom_y;
 
-    // =========================================================
-    // level manager
-    // =========================================================
     level_manager u_level_manager
     (
-        .CLK            (CLK),
-        .RST            (RST),
+        .CLK             (CLK),
+        .RST             (RST),
 
-        .DOOR_HIT       (door_hit),
+        .DOOR_HIT        (door_hit),
         .DOOR_TARGET_LEVEL(door_target_level),
         .DOOR_TARGET_ENTRY(door_target_entry),
 
-        .RESPAWN_ACK    (respawn_ack),
+        .RESPAWN_ACK     (respawn_ack),
 
-        .SPAWN_LEFT_X   (spawn_left_x),
-        .SPAWN_LEFT_Y   (spawn_left_y),
-        .SPAWN_RIGHT_X  (spawn_right_x),
-        .SPAWN_RIGHT_Y  (spawn_right_y),
-        .SPAWN_TOP_X    (spawn_top_x),
-        .SPAWN_TOP_Y    (spawn_top_y),
-        .SPAWN_BOTTOM_X (spawn_bottom_x),
-        .SPAWN_BOTTOM_Y (spawn_bottom_y),
+        .SPAWN_LEFT_X    (spawn_left_x),
+        .SPAWN_LEFT_Y    (spawn_left_y),
+        .SPAWN_RIGHT_X   (spawn_right_x),
+        .SPAWN_RIGHT_Y   (spawn_right_y),
+        .SPAWN_TOP_X     (spawn_top_x),
+        .SPAWN_TOP_Y     (spawn_top_y),
+        .SPAWN_BOTTOM_X  (spawn_bottom_x),
+        .SPAWN_BOTTOM_Y  (spawn_bottom_y),
 
-        .LEVEL_ID       (level_id),
-        .ENTRY_ID       (entry_id),
-        .SPAWN_X        (spawn_x),
-        .SPAWN_Y        (spawn_y),
-        .RESPAWN_REQ    (respawn_req)
+        .LEVEL_ID        (level_id),
+        .ENTRY_ID        (entry_id),
+        .SPAWN_X         (spawn_x),
+        .SPAWN_Y         (spawn_y),
+        .RESPAWN_REQ     (respawn_req)
     );
 
-    // =========================================================
-    // level data mux
-    // =========================================================
     level_data_mux
     #(
         .MAX_PLATFORMS(MAX_PLATFORMS),
@@ -134,6 +119,9 @@ module pong_main
     u_level_data_mux
     (
         .LEVEL_ID              (level_id),
+
+        .LEVEL_W               (level_w),
+        .LEVEL_H               (level_h),
 
         .PLAT_COUNT            (plat_count),
         .PLAT_X_BUS            (plat_x_bus),
@@ -159,12 +147,6 @@ module pong_main
         .SPAWN_BOTTOM_Y        (spawn_bottom_y)
     );
 
-    // =========================================================
-    // rozpakowanie pierwszych 3 platform do render_main
-    // slot 0 = floor
-    // slot 1 = plat0
-    // slot 2 = plat1
-    // =========================================================
     wire [10:0] floor_x;
     wire [10:0] floor_y;
     wire [10:0] floor_w;
@@ -195,15 +177,10 @@ module pong_main
     assign plat1_w = plat_w_bus[2*11 +: 11];
     assign plat1_h = plat_h_bus[2*11 +: 11];
 
-    // =========================================================
-    // stan gracza
-    // =========================================================
     wire [10:0] player_x;
     wire [10:0] player_y;
+    wire [10:0] camera_x;
 
-    // =========================================================
-    // GAME ENGINE
-    // =========================================================
     game_engine
     #(
         .MAX_PLATFORMS(MAX_PLATFORMS),
@@ -229,6 +206,9 @@ module pong_main
         .SPAWN_Y   (spawn_y),
         .RESPAWN_ACK(respawn_ack),
 
+        .LEVEL_W   (level_w),
+        .LEVEL_H   (level_h),
+
         .PLAT_COUNT(plat_count),
         .PLAT_X_BUS(plat_x_bus),
         .PLAT_Y_BUS(plat_y_bus),
@@ -251,9 +231,20 @@ module pong_main
         .DOOR_TARGET_ENTRY(door_target_entry)
     );
 
-    // =========================================================
-    // RENDERER
-    // =========================================================
+    camera_engine
+    #(
+        .SCR_W    (SCR_W),
+        .PLAYER_W (PLAYER_W)
+    )
+    u_camera_engine
+    (
+        .CLK      (CLK),
+        .RST      (RST),
+        .PLAYER_X (player_x),
+        .LEVEL_W  (level_w),
+        .CAMERA_X (camera_x)
+    );
+
     render_main
     #(
         .SCR_W    (SCR_W),
@@ -267,6 +258,8 @@ module pong_main
         .RST      (RST),
         .H_CNT    (H_CNT),
         .V_CNT    (V_CNT),
+
+        .CAMERA_X (camera_x),
 
         .PLAYER_X (player_x),
         .PLAYER_Y (player_y),
@@ -291,9 +284,6 @@ module pong_main
         .BLUE     (BLUE)
     );
 
-    // =========================================================
-    // DEBUG LED
-    // =========================================================
     assign LED[0] = key_left;
     assign LED[1] = key_right;
     assign LED[2] = key_up;

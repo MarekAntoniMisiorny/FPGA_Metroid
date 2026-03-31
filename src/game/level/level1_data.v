@@ -5,11 +5,14 @@ module level1_data
 #(
     parameter integer MAX_PLATFORMS = 8,
     parameter integer MAX_DOORS     = 4,
-    parameter [10:0] SCR_W = 11'd30,
-    parameter [10:0] SCR_H = 11'd20,
-    parameter [10:0] PLAYER_H = 11'd4
+    parameter [10:0] SCR_W          = 11'd30,
+    parameter [10:0] SCR_H          = 11'd20,
+    parameter [10:0] PLAYER_H       = 11'd4
 )
 (
+    output wire [10:0] LEVEL_W,
+    output wire [10:0] LEVEL_H,
+
     output wire [7:0] PLAT_COUNT,
     output wire [MAX_PLATFORMS*11-1:0] PLAT_X_BUS,
     output wire [MAX_PLATFORMS*11-1:0] PLAT_Y_BUS,
@@ -34,25 +37,31 @@ module level1_data
     output wire [10:0] SPAWN_BOTTOM_Y
 );
 
+    localparam [10:0] LEVEL_W_LOCAL = SCR_W * 3;
+    localparam [10:0] LEVEL_H_LOCAL = SCR_H;
+
     localparam [10:0] FLOOR_X = 11'd0;
-    localparam [10:0] FLOOR_Y = SCR_H - (SCR_H / 6);
-    localparam [10:0] FLOOR_W = SCR_W;
-    localparam [10:0] FLOOR_H = (SCR_H / 6);
+    localparam [10:0] FLOOR_Y = LEVEL_H_LOCAL - (LEVEL_H_LOCAL / 6);
+    localparam [10:0] FLOOR_W = LEVEL_W_LOCAL;
+    localparam [10:0] FLOOR_H = (LEVEL_H_LOCAL / 6);
 
     localparam [10:0] P0_X = SCR_W / 3;
-    localparam [10:0] P0_Y = (SCR_H * 2) / 3;
+    localparam [10:0] P0_Y = LEVEL_H_LOCAL / 2;
     localparam [10:0] P0_W = SCR_W / 4;
     localparam [10:0] P0_H = 11'd2;
 
-    localparam [10:0] P1_X = SCR_W / 8;
-    localparam [10:0] P1_Y = SCR_H / 4;
-    localparam [10:0] P1_W = SCR_W / 3;
+    localparam [10:0] P1_X = (LEVEL_W_LOCAL * 2) / 3;
+    localparam [10:0] P1_Y = LEVEL_H_LOCAL / 3;
+    localparam [10:0] P1_W = SCR_W / 4;
     localparam [10:0] P1_H = 11'd2;
 
-    localparam [10:0] D0_X = 11'd0;
-    localparam [10:0] D0_Y = FLOOR_Y - (SCR_H / 6);
+    localparam [10:0] D0_X = 11'd1;
+    localparam [10:0] D0_Y = FLOOR_Y - (LEVEL_H_LOCAL / 6);
     localparam [10:0] D0_W = (SCR_W / 12);
-    localparam [10:0] D0_H = (SCR_H / 6);
+    localparam [10:0] D0_H = (LEVEL_H_LOCAL / 6);
+
+    assign LEVEL_W = LEVEL_W_LOCAL;
+    assign LEVEL_H = LEVEL_H_LOCAL;
 
     assign PLAT_COUNT = 8'd3;
 
@@ -113,19 +122,19 @@ module level1_data
 
     assign DOOR_TARGET_ENTRY_BUS = {
         {(MAX_DOORS-1)*2{1'b0}},
-        2'd1   // wejœcie z prawej w levelu 0
+        2'd1
     };
 
     assign SPAWN_LEFT_X   = 11'd2;
     assign SPAWN_LEFT_Y   = FLOOR_Y - PLAYER_H;
 
-    assign SPAWN_RIGHT_X  = SCR_W - (SCR_W / 8);
+    assign SPAWN_RIGHT_X  = LEVEL_W_LOCAL - (SCR_W / 8);
     assign SPAWN_RIGHT_Y  = FLOOR_Y - PLAYER_H;
 
-    assign SPAWN_TOP_X    = SCR_W / 2;
+    assign SPAWN_TOP_X    = LEVEL_W_LOCAL / 2;
     assign SPAWN_TOP_Y    = 11'd2;
 
-    assign SPAWN_BOTTOM_X = SCR_W / 2;
+    assign SPAWN_BOTTOM_X = LEVEL_W_LOCAL / 2;
     assign SPAWN_BOTTOM_Y = FLOOR_Y - PLAYER_H;
 
 endmodule

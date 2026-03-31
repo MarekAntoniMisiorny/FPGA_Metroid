@@ -1,4 +1,4 @@
-timestamp=1773919644007
+timestamp=1774961973580
 
 [~A]
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/game/game_engine.v=0*1662057*1664116
@@ -12,6 +12,7 @@ C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³a
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/pong_main.v=0*1195757*1197041
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/pong_main.v_check_boundries.v_render_main.v_rect_painter.v_bg_painter.v_f_in_rect.v_pll_75mhz.v_delay.v_vga_sync_gen.v_player_move.v_game_tick.v_game_engine.v_tb.v_ddr.v_dev_i2c_phy.v_dev_i2c_phy_bit.v_dev_i2c_phy_scaler.v_hdmi_i2c_cfg.v_pong_top.v_uart_rx.v_uart_tx.v_vo_phy_ddr.v=0*1240950*1257097
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/pong_main.v_f_in_rect.v_pll_75mhz.v_delay.v_vga_sync_gen.v_tb.v_ddr.v_dev_i2c_phy.v_dev_i2c_phy_bit.v_dev_i2c_phy_scaler.v_hdmi_i2c_cfg.v_pong_top.v_uart_rx.v_uart_tx.v_vo_phy_ddr.v=0*161842*174913
+C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/pong_main.v_player_on_ground_resolver.v_render_main.v_rect_painter.v_bg_painter.v_f_in_rect.v_pll_75mhz.v_delay.v_vga_sync_gen.v_camera_engine.v_game_tick.v_game_engine.v_door_collision_list.v_player_on_ground_list.v_player_platform_collision_list.v_player_on_ground_total.v_player_platform_collision.v_player_on_ground.v_check_boundries.v_player_jump.v_player_gravity.v_player_move.v_level_mux.v_level0_data.v_level1_data.v_level_manager.v_tb.v_ddr.v_dev_i2c_phy.v_dev_i2c_phy_bit.v_dev_i2c_phy_scaler.v_hdmi_i2c_cfg.v_pong_top.v_uart_rx.v_uart_tx.v_vo_phy_ddr.v=0*2531640*2556997
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/pong_main.v_player_on_ground_resolver.v_render_main.v_rect_painter.v_bg_painter.v_f_in_rect.v_pll_75mhz.v_delay.v_vga_sync_gen.v_game_tick.v_game_engine.v_door_collision_list.v_player_on_ground_list.v_player_platform_collision_list.v_player_on_ground_total.v_player_platform_collision.v_player_on_ground.v_check_boundries.v_player_jump.v_player_gravity.v_player_move.v_level_mux.v_level0_data.v_level1_data.v_level_manager.v_tb.v_ddr.v_dev_i2c_phy.v_dev_i2c_phy_bit.v_dev_i2c_phy_scaler.v_hdmi_i2c_cfg.v_pong_top.v_uart_rx.v_uart_tx.v_vo_phy_ddr.v=0*2492028*2516345
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/pong_main.v_player_on_ground_resolver.v_render_main.v_rect_painter.v_bg_painter.v_f_in_rect.v_pll_75mhz.v_delay.v_vga_sync_gen.v_game_tick.v_game_engine.v_player_on_ground_list.v_player_platform_collision_list.v_player_on_ground_total.v_player_platform_collision.v_player_on_ground.v_check_boundries.v_player_jump.v_player_gravity.v_player_move.v_level_mux.v_level0_data.v_level1_data.v_level_manager.v_tb.v_ddr.v_dev_i2c_phy.v_dev_i2c_phy_bit.v_dev_i2c_phy_scaler.v_hdmi_i2c_cfg.v_pong_top.v_uart_rx.v_uart_tx.v_vo_phy_ddr.v=0*2298761*2320944
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/pong_main.v_player_on_ground_resolver.v_render_main.v_rect_painter.v_bg_painter.v_f_in_rect.v_pll_75mhz.v_delay.v_vga_sync_gen.v_game_tick.v_game_engine.v_player_on_ground_one.v_player_platform_collision_resolver.v_player_platform_collision_one.v_player_on_ground_total.v_player_platform_collision.v_player_on_ground.v_check_boundries.v_player_jump.v_player_gravity.v_player_move.v_level_mux.v_level0_data.v_level1_data.v_level_manager.v_level_data.v_tb.v_ddr.v_dev_i2c_phy.v_dev_i2c_phy_bit.v_dev_i2c_phy_scaler.v_hdmi_i2c_cfg.v_pong_top.v_uart_rx.v_uart_tx.v_vo_phy_ddr.v=0*2009579*2032514
@@ -28,9 +29,9 @@ C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³a
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/pong_main.v_render_main.v_rect_painter.v_bg_painter.v_f_in_rect.v_pll_75mhz.v_delay.v_vga_sync_gen.v_tb.v_ddr.v_dev_i2c_phy.v_dev_i2c_phy_bit.v_dev_i2c_phy_scaler.v_hdmi_i2c_cfg.v_pong_top.v_uart_rx.v_uart_tx.v_vo_phy_ddr.v=0*223928*237985
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/render/render_main.v=0*635374*636571
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/top/tb.v=0*1205476*1207829
-CUSP_Counter=81
+CUSP_Counter=82
 LastVerilogToplevel=uart_tx
-ModifyID=156
+ModifyID=157
 Version=74
 c:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/delay.v_pong_main.v_vga_sync_gen.v=0*1141*3888
 c:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/delay.v_pong_main.v_vga_sync_gen.v_tb.v=0*17803*21531
@@ -38,114 +39,121 @@ c:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³a
 c:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/tb.v=0*117415*119268
 
 [~MFT]
-0=41|0mettroid.mgf|2516345|1439851
-1=72|1mettroid.mgf|9136453|8975284
-3=144|3mettroid.mgf|5988330|5886143
+0=40|0mettroid.mgf|2556997|1440324
+1=73|1mettroid.mgf|9297136|9129925
+3=146|3mettroid.mgf|6086331|5980411
 
 [$root]
-A/$root=22|||1*8984999
-BinW64/$root=3*5894423
-SLP=3*5894538
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|c73a565f2ade592f8ac1c68f484c921651722e8d45e3cc761e7a1e2ec3343fc0
+A/$root=22|||1*9139640
+BinW64/$root=3*5988691
+SLP=3*5988806
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|c73a565f2ade592f8ac1c68f484c92162459e3d07d3c4ba95b5333e11a79bbfb
 
-[UnitScopePackage_81]
-A/UnitScopePackage_81=22|../src/pong_main.v|0|1*9136453
-BinW64/UnitScopePackage_81=3*5987625
+[UnitScopePackage_82]
+A/UnitScopePackage_82=22|../src/pong_main.v|0|1*9297136
+BinW64/UnitScopePackage_82=3*6085626
 CUSP=1
 R=../src/pong_main.v|0
-SLP=3*5988330
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|fab98aed36991913255ea6c02c9bb53e2ed13c0c0a1e4452e62dd1c1cafcf71bea77da5cadf6536432eb31f7c919b423
+SLP=3*6086331
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|fab98aed36991913255ea6c02c9bb53efc06df34b6fecb0032ffc7a5d66b7945e90e33cf707fc8d16bc3094dc1407b1d
 
 [bg_painter]
-A/bg_painter=22|../src/render/bg_painter.v|4|1*9028129
-BinW64/bg_painter=3*5906655
+A/bg_painter=22|../src/render/bg_painter.v|4|1*9187656
+BinW64/bg_painter=3*6004246
 R=../src/render/bg_painter.v|4
-SLP=3*5907177
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|ab94fbc9e6286ca5fc699602de01d6f665ecc6e0547c255bf63bc61a196f3573a47c636dcf205abe15403ffd2ed26b45
+SLP=3*6004768
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|ab94fbc9e6286ca5fc699602de01d6f665ecc6e0547c255bf63bc61a196f35735c3be35433f347e95816c7ef34d0fd49
+
+[camera_engine]
+A/camera_engine=22|../src/game/camera_engine.v|4|1*9175341
+BinW64/camera_engine=3*5999759
+R=../src/game/camera_engine.v|4
+SLP=3*6000815
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|389fae7f9cb86dc6291b1f4057e7af601047156ac24b730544e717a12e0880668030ad8e4a26a93e7cdf87aa6fd7ff22
 
 [check_boundaries]
-A/check_boundaries=22|../src/game/player/Collisions/check_boundries.v|4|1*9063321
-BinW64/check_boundaries=3*5931887
+A/check_boundaries=22|../src/game/player/Collisions/check_boundries.v|4|1*9222848
+BinW64/check_boundaries=3*6029478
 R=../src/game/player/Collisions/check_boundries.v|4
-SLP=3*5932790
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|98abef38501aa098db7648bc5281d5df4401a09c1ea6b741be9bc48ccb7afc79cd7aa57710e8b583333ec4f4a74230e9
+SLP=3*6030394
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|98abef38501aa098db7648bc5281d5df4401a09c1ea6b741be9bc48ccb7afc79770862ead7df5ae7bdbc290660647416
 
 [ddr]
-A/ddr=22|../src/communication/ddr.v|8|1*9095061
-BinW64/ddr=3*5954351
+A/ddr=22|../src/communication/ddr.v|8|1*9255744
+BinW64/ddr=3*6052351
 R=../src/communication/ddr.v|8
-SLP=3*5954798
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|03264f2f5e55a9a5a4ea098f2334900483bf6a22a3dc530ca11eedacca633da6
+SLP=3*6052798
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|03264f2f5e55a9a5a4ea098f233490043327c6ca77383f7e895a6540c5ac3434
 
 [delay]
-A/delay=22|../src/video/delay.v|1|1*9040411
-BinW64/delay=3*5910667
+A/delay=22|../src/video/delay.v|1|1*9199938
+BinW64/delay=3*6008258
 R=../src/video/delay.v|1
-SLP=3*5912676
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|f5a6c04acf499dc0ea18f307c3269eaf89c8bba41487d4deec29c97f5a67fb62
+SLP=3*6010267
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|f5a6c04acf499dc0ea18f307c3269eafca8c0acc0f5ad963323aaa1e0484f1f0
 
 [dev_i2c_phy]
-A/dev_i2c_phy=22|../src/communication/dev_i2c_phy.v|16|1*9097595
-BinW64/dev_i2c_phy=3*5955054
+A/dev_i2c_phy=22|../src/communication/dev_i2c_phy.v|16|1*9258278
+BinW64/dev_i2c_phy=3*6053054
 R=../src/communication/dev_i2c_phy.v|16
-SLP=3*5958964
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|64571c99017e40256860b4006874d7efdff09ac6551def9523e685d5c2ceaab859eefe15f8a8e3a3559f7442d6b569ac
+SLP=3*6056964
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|64571c99017e40256860b4006874d7efdff09ac6551def9523e685d5c2ceaab8d89aaab042b96c6eafe924426e42cdf1
 
 [dev_i2c_phy_bit]
-A/dev_i2c_phy_bit=22|../src/communication/dev_i2c_phy_bit.v|9|1*9106620
-BinW64/dev_i2c_phy_bit=3*5963970
+A/dev_i2c_phy_bit=22|../src/communication/dev_i2c_phy_bit.v|9|1*9267303
+BinW64/dev_i2c_phy_bit=3*6061970
 R=../src/communication/dev_i2c_phy_bit.v|9
-SLP=3*5967191
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|94250b773ee2fd339c5492c35d77f328c995787789af73ab33ea20d94268dfd627ba965699ae958b6f652ddb45af7a7d
+SLP=3*6065191
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|94250b773ee2fd339c5492c35d77f328c995787789af73ab33ea20d94268dfd6371837d092295f4d8c140cb76dd6f2b5
 
 [dev_i2c_phy_scaler]
-A/dev_i2c_phy_scaler=22|../src/communication/dev_i2c_phy_scaler.v|9|1*9105019
-BinW64/dev_i2c_phy_scaler=3*5962827
+A/dev_i2c_phy_scaler=22|../src/communication/dev_i2c_phy_scaler.v|9|1*9265702
+BinW64/dev_i2c_phy_scaler=3*6060827
 R=../src/communication/dev_i2c_phy_scaler.v|9
-SLP=3*5963585
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|43638be5364308fb621f385fff25167690522c4920ef0490c4c47eb99d0aef3cac5328078b91c9d0838621aa6244f6c3
+SLP=3*6061585
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|43638be5364308fb621f385fff25167690522c4920ef0490c4c47eb99d0aef3c1687a769a3b5645da3f1fb5cd5ce2451
 
 [door_collision_list]
-A/door_collision_list=22|../src/game/player/Collisions/door_collision_list.v|4|1*9065155
-BinW64/door_collision_list=3*5933152
+A/door_collision_list=22|../src/game/player/Collisions/door_collision_list.v|4|1*9224728
+BinW64/door_collision_list=3*6030859
 R=../src/game/player/Collisions/door_collision_list.v|4
-SLP=3*5934975
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|42545be8c7b02477bc286be1d0f68c77b1127f50669d6c9012b9852c306bc1dc7dc22c6e693b08d0ecaddd41f350fe93
+SLP=3*6032682
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|42545be8c7b02477bc286be1d0f68c77b1127f50669d6c9012b9852c306bc1dc7b70787e825e8e038346cacaec23602f
 
 [game_engine]
-A/game_engine=22|../src/game/game_engine.v|4|1*9010251
-BinW64/game_engine=3*5903394
+A/game_engine=22|../src/game/game_engine.v|4|1*9166059
+BinW64/game_engine=3*5997883
 R=../src/game/game_engine.v|4
-SLP=3*5904353
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|f8fac472cadf153ed0b416d10855280b5b8b00f716093132cb9c32af2d869f727eb94ea7c1478c422062e5b6cbb30654
+SLP=3*5998844
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|f8fac472cadf153ed0b416d10855280b5b8b00f716093132cb9c32af2d869f72b2ab92daf72367b2f8a51b12a518de3b
 
 [game_tick]
-A/game_tick=22|../src/game/game_tick.v|4|1*9050531
-BinW64/game_tick=3*5921833
+A/game_tick=22|../src/game/game_tick.v|4|1*9210058
+BinW64/game_tick=3*6019424
 R=../src/game/game_tick.v|4
-SLP=3*5922490
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|e735bb9ce8133fa2541ae0c3a59679e6a283e19c6dc439dd273f2bfc88fe1816cb3cbc9f500f3b05e19b3acbde0e1145
+SLP=3*6020081
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|e735bb9ce8133fa2541ae0c3a59679e6a283e19c6dc439dd273f2bfc88fe1816d96d1073257dc12a1e81dc75f410e166
 
 [hdmi_i2c_cfg]
-A/hdmi_i2c_cfg=22|../src/communication/hdmi_i2c_cfg.v|1|1*9112867
-BinW64/hdmi_i2c_cfg=3*5970331
+A/hdmi_i2c_cfg=22|../src/communication/hdmi_i2c_cfg.v|1|1*9273550
+BinW64/hdmi_i2c_cfg=3*6068331
 R=../src/communication/hdmi_i2c_cfg.v|1
-SLP=3*5971672
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|48f66c98b4f7a526f368f7639b05eb4930186e63699880dbb45137d42aaafb6da41659036121028c8ddd02f34e039a69
+SLP=3*6069672
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|48f66c98b4f7a526f368f7639b05eb4930186e63699880dbb45137d42aaafb6d9eab69dca2981eb4ff03749a742d9a06
 
 [level0_data]
-A/level0_data=22|../src/game/level/level0_data.v|4|1*9074883
-BinW64/level0_data=3*5939962
+A/level0_data=22|../src/game/level/level0_data.v|4|1*9234456
+BinW64/level0_data=3*6037669
 R=../src/game/level/level0_data.v|4
-SLP=3*5943207
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|5ce87cbe0e6e5937e1ba24da486d0252cea37decc7ccd266a5ac8ca9f71a94f51ef20bc45dbfeac8a89ec474fc57e407
+SLP=3*6040979
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|5ce87cbe0e6e5937e1ba24da486d0252cea37decc7ccd266a5ac8ca9f71a94f5dba9f2529b66354b629158d471880616
 
 [level1_data]
-A/level1_data=22|../src/game/level/level1_data.v|4|1*9081163
-BinW64/level1_data=3*5944474
+A/level1_data=22|../src/game/level/level1_data.v|4|1*9241304
+BinW64/level1_data=3*6042313
 R=../src/game/level/level1_data.v|4
-SLP=3*5947691
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|62c2f002bfa46dcebcfecaac603b561e636d846f765426b0177f64a5c97faf0729bb284191f022d63dd7bc6ad70cdc04
+SLP=3*6045628
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|62c2f002bfa46dcebcfecaac603b561e636d846f765426b0177f64a5c97faf077397401e8364136d94e0e9dbe082d198
 
 [level_data]
 A/level_data=22|../src/game/level/level_data.v|4|1*7190116
@@ -155,53 +163,53 @@ SLP=3*4777284
 Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|d31daaed23ba6a24e0599a7cd99c96ae947e4ac15ec61c1f3e3f1b6eb6937cbca7f13ef8bcb5369720d378f084b23375
 
 [level_data_mux]
-A/level_data_mux=22|../src/game/level/level_mux.v|4|1*9001123
-BinW64/level_data_mux=3*5900192
+A/level_data_mux=22|../src/game/level/level_mux.v|4|1*9156351
+BinW64/level_data_mux=3*5994460
 R=../src/game/level/level_mux.v|4
-SLP=3*5902098
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|2d5f400e72153cceeaa26cbe290327103f3a4e69b7e950740a1c63cb9f2421258d5dc29224781bcfac356391918bffe5
+SLP=3*5996471
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|2d5f400e72153cceeaa26cbe290327103f3a4e69b7e950740a1c63cb9f2421251b9e78803ff2677a7794c28a4d427d01
 
 [level_manager]
-A/level_manager=22|../src/game/level/level_manager.v|4|1*8997597
-BinW64/level_manager=3*5897482
+A/level_manager=22|../src/game/level/level_manager.v|4|1*9152825
+BinW64/level_manager=3*5991750
 R=../src/game/level/level_manager.v|4
-SLP=3*5899344
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|451bae052faff03053cf57e3ab515575b31b24938939205d69a7accf39c3bfa0bbeba2c96bf4bb5a668ab4a5e29b3b04
+SLP=3*5993612
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|451bae052faff03053cf57e3ab515575b31b24938939205d69a7accf39c3bfa0c9587a081c4d194df446ccdf7feb25cb
 
 [player_gravity]
-A/player_gravity=22|../src/game/player/Movement/player_gravity.v|4|1*9057637
-BinW64/player_gravity=3*5927414
+A/player_gravity=22|../src/game/player/Movement/player_gravity.v|4|1*9217164
+BinW64/player_gravity=3*6025005
 R=../src/game/player/Movement/player_gravity.v|4
-SLP=3*5928413
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|977082272194bd56f183d8bcf1375ee5dd0f4f673597a7814c7d50fe0d10fc909c2899b6de9914b2586fe914293d2f4f
+SLP=3*6026004
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|977082272194bd56f183d8bcf1375ee5dd0f4f673597a7814c7d50fe0d10fc905aac5b38eec526984e42bbef35413e80
 
 [player_jump]
-A/player_jump=22|../src/game/player/Movement/player_jump.v|4|1*9056175
-BinW64/player_jump=3*5926549
+A/player_jump=22|../src/game/player/Movement/player_jump.v|4|1*9215702
+BinW64/player_jump=3*6024140
 R=../src/game/player/Movement/player_jump.v|4
-SLP=3*5927170
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|8fcd690dc3fc0e8f8952474f7c8c7f7df3ff5116106b0c0866cc6338bd9883cf2304ec6752042ee43948236f911c7f66
+SLP=3*6024761
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|8fcd690dc3fc0e8f8952474f7c8c7f7df3ff5116106b0c0866cc6338bd9883cf1d8f7ee1119ea0832d946372da84eaba
 
 [player_move]
-A/player_move=22|../src/game/player/Movement/player_move.v|4|1*9051875
-BinW64/player_move=3*5922913
+A/player_move=22|../src/game/player/Movement/player_move.v|4|1*9211402
+BinW64/player_move=3*6020504
 R=../src/game/player/Movement/player_move.v|4
-SLP=3*5923775
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|d3de40c24ad1be3a3f1db80488d632740c86bfe967409feb5fbc6f583c0c5c4936f929a52e6e4a8cf182002aadc1aa14
+SLP=3*6021366
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|d3de40c24ad1be3a3f1db80488d632740c86bfe967409feb5fbc6f583c0c5c49c78defd204c27e53fd43b2a0ed3ea337
 
 [player_on_ground]
-A/player_on_ground=22|../src/game/player/Collisions/player_on_ground.v|4|1*9073538
-BinW64/player_on_ground=3*5939190
+A/player_on_ground=22|../src/game/player/Collisions/player_on_ground.v|4|1*9233111
+BinW64/player_on_ground=3*6036897
 R=../src/game/player/Collisions/player_on_ground.v|4
-SLP=3*5939759
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|5f2975c495d822f88908cbe938c86f96813c37584e5352912215f464d9b856c3f43faa61e6f201aa27d58c6106050c46
+SLP=3*6037466
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|5f2975c495d822f88908cbe938c86f96813c37584e5352912215f464d9b856c306737c67905be57e2e4ca2fcb2a3211a
 
 [player_on_ground_list]
-A/player_on_ground_list=22|../src/game/player/Collisions/player_on_ground_list.v|4|1*9053234
-BinW64/player_on_ground_list=3*5924205
+A/player_on_ground_list=22|../src/game/player/Collisions/player_on_ground_list.v|4|1*9212761
+BinW64/player_on_ground_list=3*6021796
 R=../src/game/player/Collisions/player_on_ground_list.v|4
-SLP=3*5925786
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|5f2975c495d822f88908cbe938c86f96c82b9324866da13ea8b3e521eae5edde062751cf544a5eb6f2254e475570cee4
+SLP=3*6023377
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|5f2975c495d822f88908cbe938c86f96c82b9324866da13ea8b3e521eae5edde8149072e92ddb0865c4524676ff3d1a2
 
 [player_on_ground_one]
 A/player_on_ground_one=22|../src/game/player/Collisions/player_on_ground_one.v|4|1*7162038
@@ -211,32 +219,32 @@ SLP=3*4756642
 Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|5f2975c495d822f88908cbe938c86f969cc24208937ae68621a9dbb21f447f62d5548394d5c7a729ba5212ff596ce161
 
 [player_on_ground_resolver]
-A/player_on_ground_resolver=22|../src/player_on_ground_resolver.v|4|1*9027071
-BinW64/player_on_ground_resolver=3*5906049
+A/player_on_ground_resolver=22|../src/player_on_ground_resolver.v|4|1*9186598
+BinW64/player_on_ground_resolver=3*6003640
 R=../src/player_on_ground_resolver.v|4
-SLP=3*5906459
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|5f2975c495d822f88908cbe938c86f96d0c1dda355b99cd295b747d22f633448ef92b7869f8e675940392983b0e457fd446eba4552e89e91dec90adadc2df3b6
+SLP=3*6004050
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|5f2975c495d822f88908cbe938c86f96d0c1dda355b99cd295b747d22f633448ef92b7869f8e675940392983b0e457fdc7bab5089795c36722dcdc9d85a19004
 
 [player_on_ground_total]
-A/player_on_ground_total=22|../src/game/player/Collisions/player_on_ground_total.v|4|1*9068723
-BinW64/player_on_ground_total=3*5935932
+A/player_on_ground_total=22|../src/game/player/Collisions/player_on_ground_total.v|4|1*9228296
+BinW64/player_on_ground_total=3*6033639
 R=../src/game/player/Collisions/player_on_ground_total.v|4
-SLP=3*5936847
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|5f2975c495d822f88908cbe938c86f96c07e56234d69411814c75e5644c4326b2523b790b39047c9ea8870b348a2c927
+SLP=3*6034554
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|5f2975c495d822f88908cbe938c86f96c07e56234d69411814c75e5644c4326b8b7de23f47f89ca5a727f84b7db58a3e
 
 [player_platform_collision]
-A/player_platform_collision=22|../src/game/player/Collisions/player_platform_collision.v|4|1*9070767
-BinW64/player_platform_collision=3*5937185
+A/player_platform_collision=22|../src/game/player/Collisions/player_platform_collision.v|4|1*9230340
+BinW64/player_platform_collision=3*6034892
 R=../src/game/player/Collisions/player_platform_collision.v|4
-SLP=3*5938566
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|016e968d33c65d6d12c2cd480166bb2900b192c6c1dac911ab4c134f9fbdc72d26527262ddaa47cb266f3a3c4d9b973a3142dfb0910cb3094553d19706b2cb5e
+SLP=3*6036273
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|016e968d33c65d6d12c2cd480166bb2900b192c6c1dac911ab4c134f9fbdc72d26527262ddaa47cb266f3a3c4d9b973a08ed857e5101282a4b4754d3be0b1642
 
 [player_platform_collision_list]
-A/player_platform_collision_list=22|../src/game/player/Collisions/player_platform_collision_list.v|4|1*9059762
-BinW64/player_platform_collision_list=3*5928943
+A/player_platform_collision_list=22|../src/game/player/Collisions/player_platform_collision_list.v|4|1*9219289
+BinW64/player_platform_collision_list=3*6026534
 R=../src/game/player/Collisions/player_platform_collision_list.v|4
-SLP=3*5930851
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|016e968d33c65d6d12c2cd480166bb2919b7ba9e0c62c9fbf374e6d6c92c7df54190e84a6ce09c3f78d17c90cdea1fe4fa6f0cd8f7fba79df0a99987989fad45
+SLP=3*6028442
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|016e968d33c65d6d12c2cd480166bb2919b7ba9e0c62c9fbf374e6d6c92c7df54190e84a6ce09c3f78d17c90cdea1fe48163024c62212952912c4c065d7ceb0d
 
 [player_platform_collision_one]
 A/player_platform_collision_one=22|../src/game/player/Collisions/player_platform_collision_one.v|4|1*7167789
@@ -253,114 +261,115 @@ SLP=3*4762237
 Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|016e968d33c65d6d12c2cd480166bb295db8809c66c448568a1670b8d570638348231e19d642ccb9277f4ffe61a93c6de91b83738a7c3ece06aaa86c3b76d80d
 
 [pll_75mhz]
-A/pll_75mhz=22|../src/video/pll_75mhz.v|8|1*9034229
-BinW64/pll_75mhz=3*5910114
+A/pll_75mhz=22|../src/video/pll_75mhz.v|8|1*9193756
+BinW64/pll_75mhz=3*6007705
 R=../src/video/pll_75mhz.v|8
-SLP=3*5910475
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|60fdd984f0a1cbafad20405dedf6ff5d8404838175f4da5b2e43fca023fd8b069ccf08e08d2572dbb20dde5522530a06
+SLP=3*6008066
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|60fdd984f0a1cbafad20405dedf6ff5d8404838175f4da5b2e43fca023fd8b06a81af308af05aebcad946e2f9decc5b1
 
 [pong_main]
-A/pong_main=22|../src/pong_main.v|4|1*8985469
-BinW64/pong_main=3*5894606
+A/pong_main=22|../src/pong_main.v|4|1*9140110
+BinW64/pong_main=3*5988874
 R=../src/pong_main.v|4
-SLP=3*5896372
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|a0a4003288634f5726a3a54d73c73bf1ae9215e4a9e21b919b5b4f6e3d86a4bf4e4d72ea412e39d64b72f99383d0a864
+SLP=3*5990638
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|a0a4003288634f5726a3a54d73c73bf1ae9215e4a9e21b919b5b4f6e3d86a4bfafcf738f2db72fe8ab285b1ebfda2243
 
 [pong_top]
-A/pong_top=22|../src/communication/pong_top.v|1|1*9116167
-BinW64/pong_top=3*5972901
+A/pong_top=22|../src/communication/pong_top.v|1|1*9276850
+BinW64/pong_top=3*6070901
 R=../src/communication/pong_top.v|1
-SLP=3*5973240
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|680c7b4443639098c350b479c305129044262b98d1ce650fcb326b0e6e607b73591c46dc0faebabc316e5e3fba6bf51b
+SLP=3*6071240
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|680c7b4443639098c350b479c305129044262b98d1ce650fcb326b0e6e607b73d9fb9ed4568890f01d76c94d0ca021ee
 
 [rect_painter]
-A/rect_painter=22|../src/render/rect_painter.v|4|1*9029741
-BinW64/rect_painter=3*5907536
-CUSP=UnitScopePackage_81
+A/rect_painter=22|../src/render/rect_painter.v|4|1*9189268
+BinW64/rect_painter=3*6005127
+CUSP=UnitScopePackage_82
 R=../src/render/rect_painter.v|4
-SLP=3*5909114
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|ea804157241c7dcd562f8e16ddebb1e9a9d41da188ccf93c2e006d0e10386429c711b2888a1786fdd758b16301d314ab
+SLP=3*6006705
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|ea804157241c7dcd562f8e16ddebb1e9a9d41da188ccf93c2e006d0e103864299369c4fe71c847c9cec23ea487cec2b9
 
 [render_main]
-A/render_main=22|../src/render/render_main.v|4|1*9019363
-BinW64/render_main=3*5905231
+A/render_main=22|../src/render/render_main.v|4|1*9177429
+BinW64/render_main=3*6001368
 R=../src/render/render_main.v|4
-SLP=3*5905631
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|8f628b3d4fa354ab1bcc875c3138f9778766fe3433493ebfdc304afd38cc21ee7c06fb82c16991ac571257040b48096d
+SLP=3*6002662
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|8f628b3d4fa354ab1bcc875c3138f9778766fe3433493ebfdc304afd38cc21ee3ac2329177a462cd5cb256e1a8823cac
 
 [tb]
-A/tb=22|../src/top/tb.v|4|1*9087449
-BinW64/tb=3*5948950
+A/tb=22|../src/top/tb.v|4|1*9248132
+BinW64/tb=3*6046950
 R=../src/top/tb.v|4
-SLP=3*5952149
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|8db8692708dc0985d408d2497dbc95fae1f2fbc107e3e26a06a2c519c0a08e74
+SLP=3*6050149
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|8db8692708dc0985d408d2497dbc95fac0e3114241b0784b1aee0de432c93f74
 
 [uart_rx]
-A/uart_rx=22|../src/communication/uart_rx.v|21|1*9127718
-BinW64/uart_rx=3*5974854
+A/uart_rx=22|../src/communication/uart_rx.v|21|1*9288401
+BinW64/uart_rx=3*6072854
 R=../src/communication/uart_rx.v|21
-SLP=3*5979416
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|d4533c9946a59a81de243b4bafd133f826527262ddaa47cb266f3a3c4d9b973af28576062d80af25db8832060f6615f4
+SLP=3*6077416
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|d4533c9946a59a81de243b4bafd133f826527262ddaa47cb266f3a3c4d9b973a560865b5799da827db8b6e1f91b351d6
 
 [uart_tx]
-A/uart_tx=22|../src/communication/uart_tx.v|1|1*9132241
-BinW64/uart_tx=3*5981182
+A/uart_tx=22|../src/communication/uart_tx.v|1|1*9292924
+BinW64/uart_tx=3*6079182
 R=../src/communication/uart_tx.v|1
-SLP=3*5986069
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|48d6a522eb64880a1c272ab04e64821526527262ddaa47cb266f3a3c4d9b973ac4a771f72850b45e7265d1c0d9c92840
+SLP=3*6084070
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|48d6a522eb64880a1c272ab04e64821526527262ddaa47cb266f3a3c4d9b973a263f38df21486d31bb3a2d7e8fe0afd2
 
 [vga_sync_gen]
-A/vga_sync_gen=22|../src/video/vga_sync_gen.v|6|1*9043235
-BinW64/vga_sync_gen=3*5913119
+A/vga_sync_gen=22|../src/video/vga_sync_gen.v|6|1*9202762
+BinW64/vga_sync_gen=3*6010710
 R=../src/video/vga_sync_gen.v|6
-SLP=3*5918399
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|2baa510cc54b701b0cdf40278836545d8be7015cad8267328f89e316e9c3fc50bf20e2d9ddce36f707fe7c70c8c4def4
+SLP=3*6015990
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|2baa510cc54b701b0cdf40278836545d8be7015cad8267328f89e316e9c3fc5022189cf3f24d1a71443e9c5a3ff2e744
 
 [vo_phy_ddr]
-A/vo_phy_ddr=22|../src/communication/vo_phy_ddr.v|10|1*9122654
-BinW64/vo_phy_ddr=3*5973471
+A/vo_phy_ddr=22|../src/communication/vo_phy_ddr.v|10|1*9283337
+BinW64/vo_phy_ddr=3*6071471
 R=../src/communication/vo_phy_ddr.v|10
-SLP=3*5974349
-Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|91a0dcdc5e9ed3107aff41d0516d556c58cafea78c4940cce8f33ee06d97c051b6693993b5ef2ecf694ff4d00530c15e
+SLP=3*6072349
+Version=15.0.261.9132 (Windows64)|0000000b789cd3f53752d02d2e33ca3634070010af02ea|91a0dcdc5e9ed3107aff41d0516d556c58cafea78c4940cce8f33ee06d97c051911fa70e09d7173924af00fb206edfe1
 
 [~U]
-$root=12|0*2478935|
-UnitScopePackage_81=12|0*2491555||0x40200000
-bg_painter=12|0*2482155|
-check_boundaries=12|0*2485412|
-ddr=12|0*2488493|
-delay=12|0*2483020|
-dev_i2c_phy=12|0*2488785|
-dev_i2c_phy_bit=12|0*2489378|
-dev_i2c_phy_scaler=12|0*2489129|
-door_collision_list=12|0*2485685|
-game_engine=12|0*2480823|
-game_tick=12|0*2483654|
-hdmi_i2c_cfg=12|0*2489681|
-level0_data=12|0*2486976|
-level1_data=12|0*2487531|
+$root=12|0*2518029|
+UnitScopePackage_82=12|0*2531167||0x40200000
+bg_painter=12|0*2521670|
+camera_engine=12|0*2520641|
+check_boundaries=12|0*2524928|
+ddr=12|0*2528099|
+delay=12|0*2522536|
+dev_i2c_phy=12|0*2528391|
+dev_i2c_phy_bit=12|0*2528984|
+dev_i2c_phy_scaler=12|0*2528735|
+door_collision_list=12|0*2525209|
+game_engine=12|0*2519950|
+game_tick=12|0*2523170|
+hdmi_i2c_cfg=12|0*2529287|
+level0_data=12|0*2526500|
+level1_data=12|0*2527094|
 level_data=12|0*2005253||0x10
-level_data_mux=12|0*2480345|
-level_manager=12|0*2479916|
-player_gravity=12|0*2484743|
-player_jump=12|0*2484474|
-player_move=12|0*2483887|
-player_on_ground=12|0*2486721||0x10
-player_on_ground_list=12|0*2484137|
+level_data_mux=12|0*2519462|
+level_manager=12|0*2519033|
+player_gravity=12|0*2524259|
+player_jump=12|0*2523990|
+player_move=12|0*2523403|
+player_on_ground=12|0*2526245||0x10
+player_on_ground_list=12|0*2523653|
 player_on_ground_one=12|0*2001422|
-player_on_ground_resolver=12|0*2481913||0x10
-player_on_ground_total=12|0*2486062||0x10
-player_platform_collision=12|0*2486374||0x10
-player_platform_collision_list=12|0*2485022|
+player_on_ground_resolver=12|0*2521428||0x10
+player_on_ground_total=12|0*2525586||0x10
+player_platform_collision=12|0*2525898||0x10
+player_platform_collision_list=12|0*2524538|
 player_platform_collision_one=12|0*2002268|
 player_platform_collision_resolver=12|0*2002623|
-pll_75mhz=12|0*2482778|
-pong_main=12|0*2479389|
-pong_top=12|0*2489934||0x10
-rect_painter=12|0*2482406|
-render_main=12|0*2481497|
-tb=12|0*2488082||0x10
-uart_rx=12|0*2490855||0x10
-uart_tx=12|0*2491202||0x10
-vga_sync_gen=12|0*2483239|
-vo_phy_ddr=12|0*2490534|
+pll_75mhz=12|0*2522294|
+pong_main=12|0*2518499|
+pong_top=12|0*2529540||0x10
+rect_painter=12|0*2521921|
+render_main=12|0*2520917|
+tb=12|0*2527684||0x10
+uart_rx=12|0*2530467||0x10
+uart_tx=12|0*2530814||0x10
+vga_sync_gen=12|0*2522755|
+vo_phy_ddr=12|0*2530146|

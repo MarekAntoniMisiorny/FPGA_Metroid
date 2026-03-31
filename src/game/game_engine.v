@@ -6,15 +6,15 @@ module game_engine
     parameter integer MAX_PLATFORMS = 8,
     parameter integer MAX_DOORS     = 4,
 
-    parameter [10:0] SCR_W          = 11'd50,
-    parameter [10:0] SCR_H          = 11'd50,
+    parameter [10:0] SCR_W          = 11'd30,
+    parameter [10:0] SCR_H          = 11'd20,
     parameter [10:0] PLAYER_W       = 11'd2,
     parameter [10:0] PLAYER_H       = 11'd4,
 
-    parameter integer TICK_CNT_MAX  = 500,
-    parameter signed [7:0] JUMP_VEL = -8'sd4,
-    parameter signed [7:0] GRAVITY_ACC = 8'sd1,
-    parameter signed [7:0] VEL_Y_MAX   = 8'sd3
+    parameter integer TICK_CNT_MAX     = 500,
+    parameter signed [7:0] JUMP_VEL    = -8'sd4,
+    parameter signed [7:0] GRAVITY_ACC =  8'sd1,
+    parameter signed [7:0] VEL_Y_MAX   =  8'sd3
 )
 (
     input  wire        CLK,
@@ -29,6 +29,9 @@ module game_engine
     input  wire [10:0] SPAWN_X,
     input  wire [10:0] SPAWN_Y,
     output reg         RESPAWN_ACK,
+
+    input  wire [10:0] LEVEL_W,
+    input  wire [10:0] LEVEL_H,
 
     input  wire [7:0]  PLAT_COUNT,
     input  wire [MAX_PLATFORMS*11-1:0] PLAT_X_BUS,
@@ -52,9 +55,6 @@ module game_engine
     output wire [1:0]  DOOR_TARGET_ENTRY
 );
 
-    // =========================================================
-    // tick gry
-    // =========================================================
     wire tick;
 
     game_tick
@@ -68,9 +68,6 @@ module game_engine
         .tick(tick)
     );
 
-    // =========================================================
-    // ruch od klawiszy
-    // =========================================================
     wire [10:0] move_x;
     wire [10:0] move_y;
 
@@ -84,9 +81,6 @@ module game_engine
         .NEXT_Y    (move_y)
     );
 
-    // =========================================================
-    // on_ground
-    // =========================================================
     wire on_ground_total;
 
     player_on_ground_list
@@ -107,9 +101,6 @@ module game_engine
         .ON_GROUND  (on_ground_total)
     );
 
-    // =========================================================
-    // skok
-    // =========================================================
     reg  signed [7:0] vel_y_reg;
     wire signed [7:0] jump_vel_y;
 
@@ -125,9 +116,6 @@ module game_engine
         .NEXT_VEL_Y (jump_vel_y)
     );
 
-    // =========================================================
-    // grawitacja
-    // =========================================================
     wire signed [7:0] grav_vel_y;
     wire [10:0]       grav_y;
 
@@ -144,9 +132,6 @@ module game_engine
         .NEXT_Y     (grav_y)
     );
 
-    // =========================================================
-    // kolizja z platformami
-    // =========================================================
     wire        hit_any;
     wire [10:0] collision_y_fixed;
 
@@ -172,31 +157,24 @@ module game_engine
         .OUT_Y      (collision_y_fixed)
     );
 
-    // =========================================================
-    // granice ekranu
-    // =========================================================
     wire [10:0] bounded_x;
     wire [10:0] bounded_y;
 
     check_boundaries
     #(
-        .SCR_W    (SCR_W),
-        .SCR_H    (SCR_H),
         .PLAYER_W (PLAYER_W),
         .PLAYER_H (PLAYER_H)
     )
     u_check_boundaries
     (
-        .IN_X  (move_x),
-        .IN_Y  (collision_y_fixed),
-        .OUT_X (bounded_x),
-        .OUT_Y (bounded_y)
+        .IN_X    (move_x),
+        .IN_Y    (collision_y_fixed),
+        .WORLD_W (LEVEL_W),
+        .WORLD_H (LEVEL_H),
+        .OUT_X   (bounded_x),
+        .OUT_Y   (bounded_y)
     );
 
-    // =========================================================
-    // kolizja z drzwiami
-    // sprawdzamy finaln¹ pozycjê po ruchu/fizyce
-    // =========================================================
     door_collision_list
     #(
         .MAX_DOORS(MAX_DOORS),
@@ -219,15 +197,12 @@ module game_engine
         .TARGET_ENTRY          (DOOR_TARGET_ENTRY)
     );
 
-    // =========================================================
-    // rejestr stanu
-    // =========================================================
     always @(posedge CLK or posedge RST) begin
         if (RST) begin
-            PLAYER_X     <= 11'd0;
-            PLAYER_Y     <= 11'd0;
-            vel_y_reg    <= 8'sd0;
-            RESPAWN_ACK  <= 1'b0;
+            PLAYER_X    <= 11'd0;
+            PLAYER_Y    <= 11'd0;
+            vel_y_reg   <= 8'sd0;
+            RESPAWN_ACK <= 1'b0;
         end
         else begin
             RESPAWN_ACK <= 1'b0;

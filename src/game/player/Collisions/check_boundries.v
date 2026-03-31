@@ -3,35 +3,41 @@
 
 module check_boundaries
 #(
-    parameter [10:0] SCR_W    = 11'd50,
-    parameter [10:0] SCR_H    = 11'd50,
     parameter [10:0] PLAYER_W = 11'd2,
     parameter [10:0] PLAYER_H = 11'd4
 )
 (
     input  wire [10:0] IN_X,
     input  wire [10:0] IN_Y,
-
+    input  wire [10:0] WORLD_W,
+    input  wire [10:0] WORLD_H,
     output reg  [10:0] OUT_X,
     output reg  [10:0] OUT_Y
 );
 
-always @(*) begin
-    OUT_X = IN_X;
-    OUT_Y = IN_Y;
+    reg [10:0] max_x;
+    reg [10:0] max_y;
 
-    // lewa granica
-    if (IN_X > (SCR_W - PLAYER_W))
-        OUT_X = SCR_W - PLAYER_W;
+    always @(*) begin
+        if (WORLD_W > PLAYER_W)
+            max_x = WORLD_W - PLAYER_W;
+        else
+            max_x = 11'd0;
 
-    // prawa granica przy unsigned:
-    // jeœli IN_X "przeleci" przez 0 i zrobi siê wielkie,
-    // to powy¿szy warunek i tak go z³apie.
-    // Dla czytelnoœci nie robimy osobnego IN_X < 0, bo to unsigned.
+        if (WORLD_H > PLAYER_H)
+            max_y = WORLD_H - PLAYER_H;
+        else
+            max_y = 11'd0;
 
-    // górna granica
-    if (IN_Y > (SCR_H - PLAYER_H))
-        OUT_Y = SCR_H - PLAYER_H;
-end
+        if (IN_X > max_x)
+            OUT_X = max_x;
+        else
+            OUT_X = IN_X;
+
+        if (IN_Y > max_y)
+            OUT_Y = max_y;
+        else
+            OUT_Y = IN_Y;
+    end
 
 endmodule

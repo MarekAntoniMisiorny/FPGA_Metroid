@@ -1,8 +1,8 @@
-Active-HDL 15.0.261.9132 2026-03-31 14:18:46
+Active-HDL 15.0.261.9132 2026-03-31 15:00:00
 
 Elaboration top modules:
 Verilog Module                tb
-SystemVerilog Package         UnitScopePackage_81
+SystemVerilog Package         UnitScopePackage_82
 
 
 ---------------------------------------------------------------------------------------------------
@@ -15,6 +15,7 @@ pong_main                      | mettroid |      | 15.0.261.9132 (Windows64) | -
 level_manager                  | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
 level_data_mux                 | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
 game_engine                    | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+camera_engine                  | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
 render_main                    | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
 level0_data                    | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
 level1_data                    | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
@@ -33,7 +34,7 @@ rect_painter                   | mettroid |      | 15.0.261.9132 (Windows64) | -
 ---------------------------------------------------------------------------------------------------
 SystemVerilog Package          | Library  | Info | Compiler Version          | Compilation Options
 ---------------------------------------------------------------------------------------------------
-UnitScopePackage_81            | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+UnitScopePackage_82            | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
 ---------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------------
@@ -41,3 +42,9 @@ Library                        | Comment
 ---------------------------------------------------------------------------------------------------
 mettroid                       | None
 ---------------------------------------------------------------------------------------------------
+
+
+Simulation Options: asim -O5 +access +w_nets +accb +accr +access +r +access +r+w tb
+
+
+The performance of simulation is reduced. Version Student Edition
