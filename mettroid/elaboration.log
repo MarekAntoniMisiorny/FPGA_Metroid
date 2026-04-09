@@ -1,8 +1,8 @@
-Active-HDL 15.0.261.9132 2026-03-31 16:09:50
+Active-HDL 15.0.261.9132 2026-04-09 14:54:30
 
 Elaboration top modules:
 Verilog Module                tb
-SystemVerilog Package         UnitScopePackage_90
+SystemVerilog Package         UnitScopePackage_96
 
 
 ---------------------------------------------------------------------------------------------------
@@ -27,6 +27,7 @@ player_gravity                 | mettroid |      | 15.0.261.9132 (Windows64) | -
 player_platform_collision_list | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
 check_boundaries               | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
 door_collision_list            | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+enemy_engine                   | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
 bg_painter                     | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
 rect_painter                   | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
 ---------------------------------------------------------------------------------------------------
@@ -34,7 +35,7 @@ rect_painter                   | mettroid |      | 15.0.261.9132 (Windows64) | -
 ---------------------------------------------------------------------------------------------------
 SystemVerilog Package          | Library  | Info | Compiler Version          | Compilation Options
 ---------------------------------------------------------------------------------------------------
-UnitScopePackage_90            | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
+UnitScopePackage_96            | mettroid |      | 15.0.261.9132 (Windows64) | -O2 -sv2k17
 ---------------------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------------------

@@ -38,3 +38,4 @@ i<>.\src\player_on_ground_list.v
 i<>.\src\player_platform_collision_list.v
 i<>.\src\door_collision_list.v
 i<>.\src\camera_engine.v
+i<>.\src\enemy_engine.v

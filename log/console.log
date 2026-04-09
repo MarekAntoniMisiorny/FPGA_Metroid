@@ -1,0 +1,162 @@
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# Design: Design mettroid already active.
+# Warning: VCP2515 video/pll_75mhz.v : (20, 40): Undefined module: VLO was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 video/pll_75mhz.v : (87, 47): Undefined module: EHXPLLJ was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (25, 49): Undefined module: OB was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (28, 25): Undefined module: ODDRXE was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (32, 40): Undefined module: VHI was used. Port connection rules will not be checked at such instantiations.
+# Unit top modules: player_on_ground_resolver player_on_ground_total player_platform_collision player_on_ground tb pong_top uart_rx uart_tx.
+# Compile success 0 Errors 5 Warnings  Analysis time: 0[s].
+# done
+# Design: Design mettroid already active.
+asim -O5 +access +w_nets +accb +accr +access +r +access +r+w tb
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library 'C:\Aldec\Active-HDL-Student-Edition\bin\systf.dll'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.1 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.6 [s]
+# SLP: Finished : 0.7 [s]
+# SLP: 0 primitives and 125 (100.00%) other processes in SLP
+# SLP: 33 (4.81%) signals in SLP and 653 (95.19%) interface signals
+# ELAB2: Elaboration final pass complete - time: 0.8 [s].
+# KERNEL: SLP loading done - time: 0.1 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 5605 kB (elbread=428 elab2=5037 kernel=139 sdf=0)
+# KERNEL: ASDB file was created in location C:\Users\marek\Documents\Studia\Magisterskie\ostatni_semestr\Projektowanie__uk³adów_FPGA\Projekt_v\mettroid\src\wave.asdb
+#  14:28, czwartek, 9 kwietnia 2026
+#  Simulation has been initialized
+run
+endsim
+# KERNEL: stopped at time: 16152015 ns
+# VSIM: Simulation has finished.
+# Design: Design mettroid already active.
+# Warning: VCP2515 video/pll_75mhz.v : (20, 40): Undefined module: VLO was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 video/pll_75mhz.v : (87, 47): Undefined module: EHXPLLJ was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (25, 49): Undefined module: OB was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (28, 25): Undefined module: ODDRXE was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (32, 40): Undefined module: VHI was used. Port connection rules will not be checked at such instantiations.
+# Unit top modules: player_on_ground_resolver player_on_ground_total player_platform_collision player_on_ground tb pong_top uart_rx uart_tx.
+# Compile success 0 Errors 5 Warnings  Analysis time: 0[s].
+# done
+# Design: Design mettroid already active.
+# Design: Design mettroid already active.
+# Warning: VCP2515 video/pll_75mhz.v : (20, 40): Undefined module: VLO was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 video/pll_75mhz.v : (87, 47): Undefined module: EHXPLLJ was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (25, 49): Undefined module: OB was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (28, 25): Undefined module: ODDRXE was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (32, 40): Undefined module: VHI was used. Port connection rules will not be checked at such instantiations.
+# Unit top modules: player_on_ground_resolver player_on_ground_total player_platform_collision player_on_ground tb pong_top uart_rx uart_tx.
+# Compile success 0 Errors 5 Warnings  Analysis time: 1[s].
+# done
+# Design: Design mettroid already active.
+asim -O5 +access +w_nets +accb +accr +access +r +access +r+w tb
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library 'C:\Aldec\Active-HDL-Student-Edition\bin\systf.dll'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.0 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.5 [s]
+# SLP: Finished : 0.5 [s]
+# SLP: 0 primitives and 125 (100.00%) other processes in SLP
+# SLP: 33 (4.81%) signals in SLP and 653 (95.19%) interface signals
+# ELAB2: Elaboration final pass complete - time: 0.5 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 5607 kB (elbread=428 elab2=5040 kernel=139 sdf=0)
+# KERNEL: ASDB file was created in location C:\Users\marek\Documents\Studia\Magisterskie\ostatni_semestr\Projektowanie__uk³adów_FPGA\Projekt_v\mettroid\src\wave.asdb
+#  14:32, czwartek, 9 kwietnia 2026
+#  Simulation has been initialized
+run
+# KERNEL: stopped at time: 4538945400 ps
+# Design: Design mettroid already active.
+# Warning: VCP2515 video/pll_75mhz.v : (20, 40): Undefined module: VLO was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 video/pll_75mhz.v : (87, 47): Undefined module: EHXPLLJ was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (25, 49): Undefined module: OB was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (28, 25): Undefined module: ODDRXE was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (32, 40): Undefined module: VHI was used. Port connection rules will not be checked at such instantiations.
+# Unit top modules: player_on_ground_resolver player_on_ground_total player_platform_collision player_on_ground tb pong_top uart_rx uart_tx.
+# Compile success 0 Errors 5 Warnings  Analysis time: 0[s].
+# done
+# Design: Design mettroid already active.
+asim -O5 +access +w_nets +accb +accr +access +r +access +r+w tb
+# ELBREAD: Elaboration process.
+# ELBREAD: Elaboration time 0.0 [s].
+# VSIM: Stack memory: 32MB
+# VSIM: Retval memory: 32MB
+# 
+# KERNEL: Main thread initiated.
+# KERNEL: Kernel process initialization phase.
+# ELAB2: Elaboration final pass...
+# KERNEL: PLI/VHPI kernel's engine initialization done.
+# PLI: Loading library 'C:\Aldec\Active-HDL-Student-Edition\bin\systf.dll'
+# ELAB2: Create instances ...
+# KERNEL: Time resolution set to 1ps.
+# ELAB2: Create instances complete.
+# SLP: Started
+# SLP: Elaboration phase ...
+# SLP: Elaboration phase ... done : 0.1 [s]
+# SLP: Generation phase ...
+# SLP: Generation phase ... done : 0.5 [s]
+# SLP: Finished : 0.6 [s]
+# SLP: 0 primitives and 125 (100.00%) other processes in SLP
+# SLP: 33 (4.81%) signals in SLP and 653 (95.19%) interface signals
+# ELAB2: Elaboration final pass complete - time: 0.7 [s].
+# KERNEL: SLP loading done - time: 0.0 [s].
+# KERNEL: Warning: You are using the Active-HDL Student Edition. The performance of simulation is running at a reduced rate.
+# KERNEL: Warning: Contact Aldec for available upgrade options - sales@aldec.com.
+# KERNEL: SLP simulation initialization done - time: 0.0 [s].
+# KERNEL: Kernel process initialization done.
+# Allocation: Simulator allocated 5602 kB (elbread=428 elab2=5035 kernel=139 sdf=0)
+# KERNEL: ASDB file was created in location C:\Users\marek\Documents\Studia\Magisterskie\ostatni_semestr\Projektowanie__uk³adów_FPGA\Projekt_v\mettroid\src\wave.asdb
+#  14:33, czwartek, 9 kwietnia 2026
+#  Simulation has been initialized
+run
+# KERNEL: stopped at time: 66047467200 ps
+# Design: Design mettroid already active.
+# Warning: VCP2515 video/pll_75mhz.v : (20, 40): Undefined module: VLO was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 video/pll_75mhz.v : (87, 47): Undefined module: EHXPLLJ was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (25, 49): Undefined module: OB was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (28, 25): Undefined module: ODDRXE was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (32, 40): Undefined module: VHI was used. Port connection rules will not be checked at such instantiations.
+# Unit top modules: player_on_ground_resolver player_on_ground_total player_platform_collision player_on_ground tb pong_top uart_rx uart_tx.
+# Compile success 0 Errors 5 Warnings  Analysis time: 0[s].
+# done
+# Design: Design mettroid already active.
+# Design: Design mettroid already active.
+# Warning: VCP2515 video/pll_75mhz.v : (20, 40): Undefined module: VLO was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 video/pll_75mhz.v : (87, 47): Undefined module: EHXPLLJ was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (25, 49): Undefined module: OB was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (28, 25): Undefined module: ODDRXE was used. Port connection rules will not be checked at such instantiations.
+# Warning: VCP2515 communication/ddr.v : (32, 40): Undefined module: VHI was used. Port connection rules will not be ch

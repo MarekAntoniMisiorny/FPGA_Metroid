@@ -6,7 +6,9 @@
       parameter [10:0] SCR_W    = 11'd30 ,
       parameter [10:0] SCR_H    = 11'd20 ,
       parameter [10:0] PLAYER_W = 11'd2  ,
-      parameter [10:0] PLAYER_H = 11'd4
+      parameter [10:0] PLAYER_H = 11'd4  ,
+      parameter [10:0] ENEMY_W  = 11'd2  ,
+      parameter [10:0] ENEMY_H  = 11'd3
   )
   (
       input  wire        CLK      ,
@@ -18,6 +20,9 @@
 
       input  wire [10:0] PLAYER_X ,
       input  wire [10:0] PLAYER_Y ,
+
+      input  wire [10:0] ENEMY0_X ,
+      input  wire [10:0] ENEMY0_Y ,
 
       input  wire [10:0] FLOOR_X  ,
       input  wire [10:0] FLOOR_Y  ,
@@ -81,17 +86,20 @@
       end
   endfunction
 
-  wire [10:0] floor_screen_x ;
-  wire [10:0] floor_screen_w ;
+  wire [10:0] floor_screen_x  ;
+  wire [10:0] floor_screen_w  ;
 
-  wire [10:0] plat0_screen_x ;
-  wire [10:0] plat0_screen_w ;
+  wire [10:0] plat0_screen_x  ;
+  wire [10:0] plat0_screen_w  ;
 
-  wire [10:0] plat1_screen_x ;
-  wire [10:0] plat1_screen_w ;
+  wire [10:0] plat1_screen_x  ;
+  wire [10:0] plat1_screen_w  ;
 
-  wire [10:0] door0_screen_x ;
-  wire [10:0] door0_screen_w ;
+  wire [10:0] door0_screen_x  ;
+  wire [10:0] door0_screen_w  ;
+
+  wire [10:0] enemy0_screen_x ;
+  wire [10:0] enemy0_screen_w ;
 
   wire [10:0] player_screen_x ;
   wire [10:0] player_screen_w ;
@@ -107,6 +115,9 @@
 
   assign door0_screen_x  = rect_screen_x ( DOOR0_X  , CAMERA_X ) ;
   assign door0_screen_w  = rect_screen_w ( DOOR0_X  , DOOR0_W  , CAMERA_X ) ;
+
+  assign enemy0_screen_x = rect_screen_x ( ENEMY0_X , CAMERA_X ) ;
+  assign enemy0_screen_w = rect_screen_w ( ENEMY0_X , ENEMY_W  , CAMERA_X ) ;
 
   assign player_screen_x = rect_screen_x ( PLAYER_X , CAMERA_X ) ;
   assign player_screen_w = rect_screen_w ( PLAYER_X , PLAYER_W , CAMERA_X ) ;
@@ -134,6 +145,10 @@
   wire [7:0] s5_r ;
   wire [7:0] s5_g ;
   wire [7:0] s5_b ;
+
+  wire [7:0] s6_r ;
+  wire [7:0] s6_g ;
+  wire [7:0] s6_b ;
 
   bg_painter
   u_bg
@@ -214,9 +229,6 @@
       .OUT_B  ( s3_b           )
   );
 
-  // =========================================================
-  // drzwi - render debugowy / tymczasowy
-  // =========================================================
   rect_painter
   u_door0
   (
@@ -239,6 +251,31 @@
       .OUT_B  ( s4_b           )
   );
 
+  // =========================================================
+  // przeciwnik debugowy
+  // =========================================================
+  rect_painter
+  u_enemy0
+  (
+      .CLK    ( CLK             ) ,
+      .RST    ( RST             ) ,
+      .H_CNT  ( H_CNT           ) ,
+      .V_CNT  ( V_CNT           ) ,
+      .RECT_X ( enemy0_screen_x ) ,
+      .RECT_Y ( ENEMY0_Y        ) ,
+      .RECT_W ( enemy0_screen_w ) ,
+      .RECT_H ( ENEMY_H         ) ,
+      .RECT_R ( 8'hFF           ) ,
+      .RECT_G ( 8'h00           ) ,
+      .RECT_B ( 8'h00           ) ,
+      .IN_R   ( s4_r            ) ,
+      .IN_G   ( s4_g            ) ,
+      .IN_B   ( s4_b            ) ,
+      .OUT_R  ( s5_r            ) ,
+      .OUT_G  ( s5_g            ) ,
+      .OUT_B  ( s5_b            )
+  );
+
   rect_painter
   u_player
   (
@@ -253,16 +290,16 @@
       .RECT_R ( 8'hFF           ) ,
       .RECT_G ( 8'hFF           ) ,
       .RECT_B ( 8'h00           ) ,
-      .IN_R   ( s4_r            ) ,
-      .IN_G   ( s4_g            ) ,
-      .IN_B   ( s4_b            ) ,
-      .OUT_R  ( s5_r            ) ,
-      .OUT_G  ( s5_g            ) ,
-      .OUT_B  ( s5_b            )
+      .IN_R   ( s5_r            ) ,
+      .IN_G   ( s5_g            ) ,
+      .IN_B   ( s5_b            ) ,
+      .OUT_R  ( s6_r            ) ,
+      .OUT_G  ( s6_g            ) ,
+      .OUT_B  ( s6_b            )
   );
 
-  assign RED   = s5_r ;
-  assign GREEN = s5_g ;
-  assign BLUE  = s5_b ;
+  assign RED   = s6_r ;
+  assign GREEN = s6_g ;
+  assign BLUE  = s6_b ;
 
   endmodule

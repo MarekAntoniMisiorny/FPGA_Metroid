@@ -3,6 +3,7 @@ TemplateId=2
 tab=lu
 [OPENDOC|Aldec.Hde.HdePlugIn.7|.\src\render/render_main.v|]
 TemplateId=2
+ActiveDocument=1
 tab=lu
 [OPENDOC|Aldec.Hde.HdePlugIn.7|.\src\pong_main.v|]
 TemplateId=2
@@ -81,8 +82,10 @@ TemplateId=2
 tab=lu
 [OPENDOC|Aldec.Hde.HdePlugIn.7|.\src\game/player/Collisions/player_platform_collision_list.v|]
 TemplateId=2
-ActiveDocument=1
 tab=lu
 [OPENDOC|Aldec.Hde.HdePlugIn.7|.\src\game/player/Collisions/door_collision_list.v|]
+TemplateId=2
+tab=lu
+[OPENDOC|Aldec.Hde.HdePlugIn.7|.\src\game\camera_engine.v|]
 TemplateId=2
 tab=lu

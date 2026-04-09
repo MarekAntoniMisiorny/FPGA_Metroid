@@ -24,6 +24,7 @@
 .\src\game\level\level0_data.v
 .\src\game\level\level1_data.v
 .\src\game\level\level_manager.v
+.\src\game\entities\enemy_engine.v
 .\src\top\tb.v
 .\src\communication\ddr.v
 .\src\communication\dev_i2c_phy.v

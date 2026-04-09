@@ -6,11 +6,15 @@
       parameter integer MAX_PLATFORMS = 8       ,
       parameter integer MAX_DOORS     = 4       ,
 
-      parameter [10:0] SCR_W          = 11'd30  ,
-      parameter [10:0] SCR_H          = 11'd20  ,
+      parameter [10:0]  SCR_W         = 11'd30  ,
+      parameter [10:0]  SCR_H         = 11'd20  ,
 
-      parameter [10:0] PLAYER_W       = 11'd2   ,
-      parameter [10:0] PLAYER_H       = 11'd4   ,
+      parameter [10:0]  PLAYER_W      = 11'd2   ,
+      parameter [10:0]  PLAYER_H      = 11'd4   ,
+
+      parameter [10:0]  ENEMY_W       = 11'd2   ,
+      parameter [10:0]  ENEMY_H       = 11'd3   ,
+      parameter integer ENEMY_TICK_DIV = 4      ,
 
       parameter integer TICK_CNT_MAX  = 500
   )
@@ -34,7 +38,7 @@
   );
 
   // =========================================================
-  // auto-skalowanie ruchu i fizyki od rozmiaru ekranu
+  // auto-skalowanie ruchu i fizyki od ekranu gry
   // =========================================================
   localparam [10:0] MOVE_STEP_LOCAL =
       (SCR_W / 11'd30 > 0) ? (SCR_W / 11'd30) : 11'd1 ;
@@ -47,6 +51,9 @@
 
   localparam signed [7:0] VEL_Y_MAX_LOCAL =
       (SCR_H / 11'd6 > 0) ?  $signed({1'b0, SCR_H / 11'd6}) :  8'sd2 ;
+
+  localparam [10:0] ENEMY_STEP_LOCAL =
+      (SCR_W / 11'd30 > 0) ? (SCR_W / 11'd30) : 11'd1 ;
 
   // =========================================================
   // sterowanie
@@ -98,6 +105,9 @@
   wire [MAX_DOORS*11-1:0] door_h_bus ;
   wire [MAX_DOORS*4-1:0]  door_target_level_bus ;
   wire [MAX_DOORS*2-1:0]  door_target_entry_bus ;
+
+  wire [10:0] enemy0_start_x     ;
+  wire [10:0] enemy0_start_y     ;
 
   wire [10:0] spawn_left_x       ;
   wire [10:0] spawn_left_y       ;
@@ -163,6 +173,9 @@
       .DOOR_TARGET_LEVEL_BUS  ( door_target_level_bus  ) ,
       .DOOR_TARGET_ENTRY_BUS  ( door_target_entry_bus  ) ,
 
+      .ENEMY0_START_X         ( enemy0_start_x         ) ,
+      .ENEMY0_START_Y         ( enemy0_start_y         ) ,
+
       .SPAWN_LEFT_X           ( spawn_left_x           ) ,
       .SPAWN_LEFT_Y           ( spawn_left_y           ) ,
       .SPAWN_RIGHT_X          ( spawn_right_x          ) ,
@@ -174,7 +187,7 @@
   );
 
   // =========================================================
-  // rozpakowanie platform do render_main
+  // rozpakowanie platform / drzwi do render_main
   // =========================================================
   wire [10:0] floor_x ;
   wire [10:0] floor_y ;
@@ -217,10 +230,15 @@
   assign door0_h = door_h_bus[0*11 +: 11] ;
 
   // =========================================================
-  // stan gracza i kamera
+  // stan gracza / przeciwnika / kamera
   // =========================================================
   wire [10:0] player_x ;
   wire [10:0] player_y ;
+
+  wire [10:0] enemy0_x ;
+  wire [10:0] enemy0_y ;
+  wire        enemy0_dir_right ;
+
   wire [10:0] camera_x ;
 
   game_engine
@@ -232,6 +250,10 @@
       .PLAYER_W          ( PLAYER_W          ) ,
       .PLAYER_H          ( PLAYER_H          ) ,
       .MOVE_STEP         ( MOVE_STEP_LOCAL   ) ,
+      .ENEMY_W           ( ENEMY_W           ) ,
+      .ENEMY_H           ( ENEMY_H           ) ,
+      .ENEMY_STEP        ( ENEMY_STEP_LOCAL  ) ,
+      .ENEMY_TICK_DIV    ( ENEMY_TICK_DIV    ) ,
       .TICK_CNT_MAX      ( TICK_CNT_MAX      ) ,
       .JUMP_VEL          ( JUMP_VEL_LOCAL    ) ,
       .GRAVITY_ACC       ( GRAVITY_ACC_LOCAL ) ,
@@ -269,12 +291,19 @@
       .DOOR_TARGET_LEVEL_BUS  ( door_target_level_bus ) ,
       .DOOR_TARGET_ENTRY_BUS  ( door_target_entry_bus ) ,
 
-      .PLAYER_X          ( player_x              ) ,
-      .PLAYER_Y          ( player_y              ) ,
+      .ENEMY0_START_X     ( enemy0_start_x       ) ,
+      .ENEMY0_START_Y     ( enemy0_start_y       ) ,
 
-      .DOOR_HIT          ( door_hit              ) ,
-      .DOOR_TARGET_LEVEL ( door_target_level     ) ,
-      .DOOR_TARGET_ENTRY ( door_target_entry     )
+      .PLAYER_X           ( player_x             ) ,
+      .PLAYER_Y           ( player_y             ) ,
+
+      .ENEMY0_X           ( enemy0_x             ) ,
+      .ENEMY0_Y           ( enemy0_y             ) ,
+      .ENEMY0_DIR_RIGHT   ( enemy0_dir_right     ) ,
+
+      .DOOR_HIT           ( door_hit             ) ,
+      .DOOR_TARGET_LEVEL  ( door_target_level    ) ,
+      .DOOR_TARGET_ENTRY  ( door_target_entry    )
   );
 
   camera_engine
@@ -296,7 +325,9 @@
       .SCR_W             ( SCR_W                 ) ,
       .SCR_H             ( SCR_H                 ) ,
       .PLAYER_W          ( PLAYER_W              ) ,
-      .PLAYER_H          ( PLAYER_H              )
+      .PLAYER_H          ( PLAYER_H              ) ,
+      .ENEMY_W           ( ENEMY_W               ) ,
+      .ENEMY_H           ( ENEMY_H               )
   )
   u_render_main
   (
@@ -309,6 +340,9 @@
 
       .PLAYER_X          ( player_x              ) ,
       .PLAYER_Y          ( player_y              ) ,
+
+      .ENEMY0_X          ( enemy0_x              ) ,
+      .ENEMY0_Y          ( enemy0_y              ) ,
 
       .FLOOR_X           ( floor_x               ) ,
       .FLOOR_Y           ( floor_y               ) ,
