@@ -5,6 +5,7 @@
   #(
       parameter integer MAX_PLATFORMS = 8       ,
       parameter integer MAX_DOORS     = 4       ,
+      parameter integer MAX_ENEMIES   = 8       ,
 
       parameter [10:0]  SCR_W         = 11'd30  ,
       parameter [10:0]  SCR_H         = 11'd20  ,
@@ -14,9 +15,9 @@
 
       parameter [10:0]  ENEMY_W       = 11'd2   ,
       parameter [10:0]  ENEMY_H       = 11'd3   ,
-      parameter integer ENEMY_TICK_DIV = 4      ,
+      parameter integer ENEMY_TICK_DIV= 4       ,
 
-      parameter integer TICK_CNT_MAX  = 500
+      parameter integer TICK_CNT_MAX  = 300
   )
   (
       input  wire        CLK      ,
@@ -37,9 +38,6 @@
       output wire [3:0]  LED
   );
 
-  // =========================================================
-  // auto-skalowanie ruchu i fizyki od ekranu gry
-  // =========================================================
   localparam [10:0] MOVE_STEP_LOCAL =
       (SCR_W / 11'd30 > 0) ? (SCR_W / 11'd30) : 11'd1 ;
 
@@ -55,22 +53,16 @@
   localparam [10:0] ENEMY_STEP_LOCAL =
       (SCR_W / 11'd30 > 0) ? (SCR_W / 11'd30) : 11'd1 ;
 
-  // =========================================================
-  // sterowanie
-  // =========================================================
-  wire key_left   ;
-  wire key_right  ;
-  wire key_up     ;
-  wire key_down   ;
+  wire key_left  ;
+  wire key_right ;
+  wire key_up    ;
+  wire key_down  ;
 
   assign key_left  = EncA_QA ;
   assign key_right = EncA_QB ;
   assign key_up    = EncB_QB ;
   assign key_down  = EncB_QA ;
 
-  // =========================================================
-  // level manager <-> game engine
-  // =========================================================
   wire        respawn_req        ;
   wire        respawn_ack        ;
 
@@ -78,17 +70,11 @@
   wire [3:0]  door_target_level  ;
   wire [1:0]  door_target_entry  ;
 
-  // =========================================================
-  // level manager outputs
-  // =========================================================
   wire [3:0]  level_id           ;
   wire [1:0]  entry_id           ;
   wire [10:0] spawn_x            ;
   wire [10:0] spawn_y            ;
 
-  // =========================================================
-  // level data outputs
-  // =========================================================
   wire [10:0] level_w            ;
   wire [10:0] level_h            ;
 
@@ -106,8 +92,15 @@
   wire [MAX_DOORS*4-1:0]  door_target_level_bus ;
   wire [MAX_DOORS*2-1:0]  door_target_entry_bus ;
 
-  wire [10:0] enemy0_start_x     ;
-  wire [10:0] enemy0_start_y     ;
+  wire [7:0]  enemy_count         ;
+  wire [MAX_ENEMIES*4-1:0]  enemy_type_bus      ;
+  wire [MAX_ENEMIES*11-1:0] enemy_start_x_bus   ;
+  wire [MAX_ENEMIES*11-1:0] enemy_start_y_bus   ;
+  wire [MAX_ENEMIES*2-1:0]  enemy_start_dir_bus ;
+  wire [MAX_ENEMIES*11-1:0] enemy_anchor_x_bus  ;
+  wire [MAX_ENEMIES*11-1:0] enemy_anchor_y_bus  ;
+  wire [MAX_ENEMIES*11-1:0] enemy_anchor_w_bus  ;
+  wire [MAX_ENEMIES*11-1:0] enemy_anchor_h_bus  ;
 
   wire [10:0] spawn_left_x       ;
   wire [10:0] spawn_left_y       ;
@@ -150,7 +143,10 @@
   #(
       .MAX_PLATFORMS     ( MAX_PLATFORMS     ) ,
       .MAX_DOORS         ( MAX_DOORS         ) ,
-      .PLAYER_H          ( PLAYER_H          )
+      .MAX_ENEMIES       ( MAX_ENEMIES       ) ,
+      .PLAYER_H          ( PLAYER_H          ) ,
+      .ENEMY_W           ( ENEMY_W           ) ,
+      .ENEMY_H           ( ENEMY_H           )
   )
   u_level_data_mux
   (
@@ -173,8 +169,15 @@
       .DOOR_TARGET_LEVEL_BUS  ( door_target_level_bus  ) ,
       .DOOR_TARGET_ENTRY_BUS  ( door_target_entry_bus  ) ,
 
-      .ENEMY0_START_X         ( enemy0_start_x         ) ,
-      .ENEMY0_START_Y         ( enemy0_start_y         ) ,
+      .ENEMY_COUNT            ( enemy_count            ) ,
+      .ENEMY_TYPE_BUS         ( enemy_type_bus         ) ,
+      .ENEMY_START_X_BUS      ( enemy_start_x_bus      ) ,
+      .ENEMY_START_Y_BUS      ( enemy_start_y_bus      ) ,
+      .ENEMY_START_DIR_BUS    ( enemy_start_dir_bus    ) ,
+      .ENEMY_ANCHOR_X_BUS     ( enemy_anchor_x_bus     ) ,
+      .ENEMY_ANCHOR_Y_BUS     ( enemy_anchor_y_bus     ) ,
+      .ENEMY_ANCHOR_W_BUS     ( enemy_anchor_w_bus     ) ,
+      .ENEMY_ANCHOR_H_BUS     ( enemy_anchor_h_bus     ) ,
 
       .SPAWN_LEFT_X           ( spawn_left_x           ) ,
       .SPAWN_LEFT_Y           ( spawn_left_y           ) ,
@@ -186,9 +189,6 @@
       .SPAWN_BOTTOM_Y         ( spawn_bottom_y         )
   );
 
-  // =========================================================
-  // rozpakowanie platform / drzwi do render_main
-  // =========================================================
   wire [10:0] floor_x ;
   wire [10:0] floor_y ;
   wire [10:0] floor_w ;
@@ -229,15 +229,12 @@
   assign door0_w = door_w_bus[0*11 +: 11] ;
   assign door0_h = door_h_bus[0*11 +: 11] ;
 
-  // =========================================================
-  // stan gracza / przeciwnika / kamera
-  // =========================================================
   wire [10:0] player_x ;
   wire [10:0] player_y ;
 
-  wire [10:0] enemy0_x ;
-  wire [10:0] enemy0_y ;
-  wire        enemy0_dir_right ;
+  wire [MAX_ENEMIES*11-1:0] enemy_x_bus ;
+  wire [MAX_ENEMIES*11-1:0] enemy_y_bus ;
+  wire [MAX_ENEMIES*2-1:0]  enemy_dir_bus ;
 
   wire [10:0] camera_x ;
 
@@ -245,6 +242,7 @@
   #(
       .MAX_PLATFORMS     ( MAX_PLATFORMS     ) ,
       .MAX_DOORS         ( MAX_DOORS         ) ,
+      .MAX_ENEMIES       ( MAX_ENEMIES       ) ,
       .SCR_W             ( SCR_W             ) ,
       .SCR_H             ( SCR_H             ) ,
       .PLAYER_W          ( PLAYER_W          ) ,
@@ -291,15 +289,22 @@
       .DOOR_TARGET_LEVEL_BUS  ( door_target_level_bus ) ,
       .DOOR_TARGET_ENTRY_BUS  ( door_target_entry_bus ) ,
 
-      .ENEMY0_START_X     ( enemy0_start_x       ) ,
-      .ENEMY0_START_Y     ( enemy0_start_y       ) ,
+      .ENEMY_COUNT            ( enemy_count           ) ,
+      .ENEMY_TYPE_BUS         ( enemy_type_bus        ) ,
+      .ENEMY_START_X_BUS      ( enemy_start_x_bus     ) ,
+      .ENEMY_START_Y_BUS      ( enemy_start_y_bus     ) ,
+      .ENEMY_START_DIR_BUS    ( enemy_start_dir_bus   ) ,
+      .ENEMY_ANCHOR_X_BUS     ( enemy_anchor_x_bus    ) ,
+      .ENEMY_ANCHOR_Y_BUS     ( enemy_anchor_y_bus    ) ,
+      .ENEMY_ANCHOR_W_BUS     ( enemy_anchor_w_bus    ) ,
+      .ENEMY_ANCHOR_H_BUS     ( enemy_anchor_h_bus    ) ,
 
       .PLAYER_X           ( player_x             ) ,
       .PLAYER_Y           ( player_y             ) ,
 
-      .ENEMY0_X           ( enemy0_x             ) ,
-      .ENEMY0_Y           ( enemy0_y             ) ,
-      .ENEMY0_DIR_RIGHT   ( enemy0_dir_right     ) ,
+      .ENEMY_X_BUS        ( enemy_x_bus          ) ,
+      .ENEMY_Y_BUS        ( enemy_y_bus          ) ,
+      .ENEMY_DIR_BUS      ( enemy_dir_bus        ) ,
 
       .DOOR_HIT           ( door_hit             ) ,
       .DOOR_TARGET_LEVEL  ( door_target_level    ) ,
@@ -322,6 +327,7 @@
 
   render_main
   #(
+      .MAX_ENEMIES       ( MAX_ENEMIES           ) ,
       .SCR_W             ( SCR_W                 ) ,
       .SCR_H             ( SCR_H                 ) ,
       .PLAYER_W          ( PLAYER_W              ) ,
@@ -341,8 +347,10 @@
       .PLAYER_X          ( player_x              ) ,
       .PLAYER_Y          ( player_y              ) ,
 
-      .ENEMY0_X          ( enemy0_x              ) ,
-      .ENEMY0_Y          ( enemy0_y              ) ,
+      .ENEMY_COUNT       ( enemy_count           ) ,
+      .ENEMY_TYPE_BUS    ( enemy_type_bus        ) ,
+      .ENEMY_X_BUS       ( enemy_x_bus           ) ,
+      .ENEMY_Y_BUS       ( enemy_y_bus           ) ,
 
       .FLOOR_X           ( floor_x               ) ,
       .FLOOR_Y           ( floor_y               ) ,

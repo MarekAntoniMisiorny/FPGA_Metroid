@@ -1,8 +1,9 @@
 [Files List]
 C:/Aldec/Active-HDL-Student-Edition/vlib/std/src/standard.vhd=S
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/render/rect_painter.v=S
-C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/render/f_in_rect.v=S
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/render/bg_painter.v=S
+C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/game/entities/Collisions/enemy_platform_loop.v=S
+C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/game/entities/Collisions/enemy_floor_bounce.v=S
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/game/entities/enemy_engine.v=S
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/game/player/Collisions/door_collision_list.v=S
 C:/Users/marek/Documents/Studia/Magisterskie/ostatni_semestr/Projektowanie__uk³adów_FPGA/Projekt_v/mettroid/src/game/player/Collisions/check_boundries.v=S

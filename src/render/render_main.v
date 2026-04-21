@@ -3,12 +3,13 @@
 
   module render_main
   #(
-      parameter [10:0] SCR_W    = 11'd30 ,
-      parameter [10:0] SCR_H    = 11'd20 ,
-      parameter [10:0] PLAYER_W = 11'd2  ,
-      parameter [10:0] PLAYER_H = 11'd4  ,
-      parameter [10:0] ENEMY_W  = 11'd2  ,
-      parameter [10:0] ENEMY_H  = 11'd3
+      parameter integer MAX_ENEMIES = 8      ,
+      parameter [10:0]  SCR_W       = 11'd30 ,
+      parameter [10:0]  SCR_H       = 11'd20 ,
+      parameter [10:0]  PLAYER_W    = 11'd2  ,
+      parameter [10:0]  PLAYER_H    = 11'd4  ,
+      parameter [10:0]  ENEMY_W     = 11'd2  ,
+      parameter [10:0]  ENEMY_H     = 11'd3
   )
   (
       input  wire        CLK      ,
@@ -21,8 +22,10 @@
       input  wire [10:0] PLAYER_X ,
       input  wire [10:0] PLAYER_Y ,
 
-      input  wire [10:0] ENEMY0_X ,
-      input  wire [10:0] ENEMY0_Y ,
+      input  wire [7:0]  ENEMY_COUNT    ,
+      input  wire [MAX_ENEMIES*4-1:0]  ENEMY_TYPE_BUS ,
+      input  wire [MAX_ENEMIES*11-1:0] ENEMY_X_BUS    ,
+      input  wire [MAX_ENEMIES*11-1:0] ENEMY_Y_BUS    ,
 
       input  wire [10:0] FLOOR_X  ,
       input  wire [10:0] FLOOR_Y  ,
@@ -49,9 +52,9 @@
       output wire [7:0]  BLUE
   );
 
-  // =========================================================
-  // world -> screen z przyciêciem od lewej
-  // =========================================================
+  localparam [3:0] TYPE_FLOOR_BOUNCE  = 4'd1 ;
+  localparam [3:0] TYPE_PLATFORM_LOOP = 4'd2 ;
+
   function [10:0] rect_screen_x;
       input [10:0] obj_x ;
       input [10:0] cam_x ;
@@ -86,6 +89,39 @@
       end
   endfunction
 
+  function [7:0] enemy_color_r;
+      input [3:0] enemy_type ;
+      begin
+          case (enemy_type)
+              TYPE_FLOOR_BOUNCE : enemy_color_r = 8'hFF ;
+              TYPE_PLATFORM_LOOP: enemy_color_r = 8'hFF ;
+              default           : enemy_color_r = 8'h80 ;
+          endcase
+      end
+  endfunction
+
+  function [7:0] enemy_color_g;
+      input [3:0] enemy_type ;
+      begin
+          case (enemy_type)
+              TYPE_FLOOR_BOUNCE : enemy_color_g = 8'h00 ;
+              TYPE_PLATFORM_LOOP: enemy_color_g = 8'h40 ;
+              default           : enemy_color_g = 8'h80 ;
+          endcase
+      end
+  endfunction
+
+  function [7:0] enemy_color_b;
+      input [3:0] enemy_type ;
+      begin
+          case (enemy_type)
+              TYPE_FLOOR_BOUNCE : enemy_color_b = 8'h00 ;
+              TYPE_PLATFORM_LOOP: enemy_color_b = 8'hC0 ;
+              default           : enemy_color_b = 8'h80 ;
+          endcase
+      end
+  endfunction
+
   wire [10:0] floor_screen_x  ;
   wire [10:0] floor_screen_w  ;
 
@@ -97,9 +133,6 @@
 
   wire [10:0] door0_screen_x  ;
   wire [10:0] door0_screen_w  ;
-
-  wire [10:0] enemy0_screen_x ;
-  wire [10:0] enemy0_screen_w ;
 
   wire [10:0] player_screen_x ;
   wire [10:0] player_screen_w ;
@@ -115,9 +148,6 @@
 
   assign door0_screen_x  = rect_screen_x ( DOOR0_X  , CAMERA_X ) ;
   assign door0_screen_w  = rect_screen_w ( DOOR0_X  , DOOR0_W  , CAMERA_X ) ;
-
-  assign enemy0_screen_x = rect_screen_x ( ENEMY0_X , CAMERA_X ) ;
-  assign enemy0_screen_w = rect_screen_w ( ENEMY0_X , ENEMY_W  , CAMERA_X ) ;
 
   assign player_screen_x = rect_screen_x ( PLAYER_X , CAMERA_X ) ;
   assign player_screen_w = rect_screen_w ( PLAYER_X , PLAYER_W , CAMERA_X ) ;
@@ -142,13 +172,17 @@
   wire [7:0] s4_g ;
   wire [7:0] s4_b ;
 
+  wire [7:0] s_enemy_r [0:MAX_ENEMIES] ;
+  wire [7:0] s_enemy_g [0:MAX_ENEMIES] ;
+  wire [7:0] s_enemy_b [0:MAX_ENEMIES] ;
+
   wire [7:0] s5_r ;
   wire [7:0] s5_g ;
   wire [7:0] s5_b ;
 
-  wire [7:0] s6_r ;
-  wire [7:0] s6_g ;
-  wire [7:0] s6_b ;
+  assign s_enemy_r[0] = s4_r ;
+  assign s_enemy_g[0] = s4_g ;
+  assign s_enemy_b[0] = s4_b ;
 
   bg_painter
   u_bg
@@ -251,55 +285,78 @@
       .OUT_B  ( s4_b           )
   );
 
-  // =========================================================
-  // przeciwnik debugowy
-  // =========================================================
-  rect_painter
-  u_enemy0
-  (
-      .CLK    ( CLK             ) ,
-      .RST    ( RST             ) ,
-      .H_CNT  ( H_CNT           ) ,
-      .V_CNT  ( V_CNT           ) ,
-      .RECT_X ( enemy0_screen_x ) ,
-      .RECT_Y ( ENEMY0_Y        ) ,
-      .RECT_W ( enemy0_screen_w ) ,
-      .RECT_H ( ENEMY_H         ) ,
-      .RECT_R ( 8'hFF           ) ,
-      .RECT_G ( 8'h00           ) ,
-      .RECT_B ( 8'h00           ) ,
-      .IN_R   ( s4_r            ) ,
-      .IN_G   ( s4_g            ) ,
-      .IN_B   ( s4_b            ) ,
-      .OUT_R  ( s5_r            ) ,
-      .OUT_G  ( s5_g            ) ,
-      .OUT_B  ( s5_b            )
-  );
+  genvar g ;
+  generate
+      for (g = 0 ; g < MAX_ENEMIES ; g = g + 1) begin : GEN_ENEMY_RECT
+          wire [10:0] enemy_rect_x ;
+          wire [10:0] enemy_rect_w ;
+          wire [7:0]  enemy_rect_r ;
+          wire [7:0]  enemy_rect_g ;
+          wire [7:0]  enemy_rect_b ;
+
+          assign enemy_rect_x =
+              rect_screen_x(ENEMY_X_BUS[g*11 +: 11], CAMERA_X) ;
+
+          assign enemy_rect_w =
+              rect_screen_w(ENEMY_X_BUS[g*11 +: 11], ENEMY_W, CAMERA_X) ;
+
+          assign enemy_rect_r =
+              (g < ENEMY_COUNT) ? enemy_color_r(ENEMY_TYPE_BUS[g*4 +: 4]) : 8'h00 ;
+
+          assign enemy_rect_g =
+              (g < ENEMY_COUNT) ? enemy_color_g(ENEMY_TYPE_BUS[g*4 +: 4]) : 8'h00 ;
+
+          assign enemy_rect_b =
+              (g < ENEMY_COUNT) ? enemy_color_b(ENEMY_TYPE_BUS[g*4 +: 4]) : 8'h00 ;
+
+          rect_painter
+          u_enemy_rect
+          (
+              .CLK    ( CLK                           ) ,
+              .RST    ( RST                           ) ,
+              .H_CNT  ( H_CNT                         ) ,
+              .V_CNT  ( V_CNT                         ) ,
+              .RECT_X ( enemy_rect_x                  ) ,
+              .RECT_Y ( ENEMY_Y_BUS[g*11 +: 11]       ) ,
+              .RECT_W ( (g < ENEMY_COUNT) ? enemy_rect_w : 11'd0 ) ,
+              .RECT_H ( (g < ENEMY_COUNT) ? ENEMY_H   : 11'd0 ) ,
+              .RECT_R ( enemy_rect_r                  ) ,
+              .RECT_G ( enemy_rect_g                  ) ,
+              .RECT_B ( enemy_rect_b                  ) ,
+              .IN_R   ( s_enemy_r[g]                  ) ,
+              .IN_G   ( s_enemy_g[g]                  ) ,
+              .IN_B   ( s_enemy_b[g]                  ) ,
+              .OUT_R  ( s_enemy_r[g+1]                ) ,
+              .OUT_G  ( s_enemy_g[g+1]                ) ,
+              .OUT_B  ( s_enemy_b[g+1]                )
+          );
+      end
+  endgenerate
 
   rect_painter
   u_player
   (
-      .CLK    ( CLK             ) ,
-      .RST    ( RST             ) ,
-      .H_CNT  ( H_CNT           ) ,
-      .V_CNT  ( V_CNT           ) ,
-      .RECT_X ( player_screen_x ) ,
-      .RECT_Y ( PLAYER_Y        ) ,
-      .RECT_W ( player_screen_w ) ,
-      .RECT_H ( PLAYER_H        ) ,
-      .RECT_R ( 8'hFF           ) ,
-      .RECT_G ( 8'hFF           ) ,
-      .RECT_B ( 8'h00           ) ,
-      .IN_R   ( s5_r            ) ,
-      .IN_G   ( s5_g            ) ,
-      .IN_B   ( s5_b            ) ,
-      .OUT_R  ( s6_r            ) ,
-      .OUT_G  ( s6_g            ) ,
-      .OUT_B  ( s6_b            )
+      .CLK    ( CLK                   ) ,
+      .RST    ( RST                   ) ,
+      .H_CNT  ( H_CNT                 ) ,
+      .V_CNT  ( V_CNT                 ) ,
+      .RECT_X ( player_screen_x       ) ,
+      .RECT_Y ( PLAYER_Y              ) ,
+      .RECT_W ( player_screen_w       ) ,
+      .RECT_H ( PLAYER_H              ) ,
+      .RECT_R ( 8'hFF                 ) ,
+      .RECT_G ( 8'hFF                 ) ,
+      .RECT_B ( 8'h00                 ) ,
+      .IN_R   ( s_enemy_r[MAX_ENEMIES]) ,
+      .IN_G   ( s_enemy_g[MAX_ENEMIES]) ,
+      .IN_B   ( s_enemy_b[MAX_ENEMIES]) ,
+      .OUT_R  ( s5_r                  ) ,
+      .OUT_G  ( s5_g                  ) ,
+      .OUT_B  ( s5_b                  )
   );
 
-  assign RED   = s6_r ;
-  assign GREEN = s6_g ;
-  assign BLUE  = s6_b ;
+  assign RED   = s5_r ;
+  assign GREEN = s5_g ;
+  assign BLUE  = s5_b ;
 
   endmodule

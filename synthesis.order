@@ -39,3 +39,5 @@ i<>.\src\player_platform_collision_list.v
 i<>.\src\door_collision_list.v
 i<>.\src\camera_engine.v
 i<>.\src\enemy_engine.v
+i<>.\src\enemy_floor_bounce.v
+i<>.\src\enemy_platform_loop.v

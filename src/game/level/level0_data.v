@@ -5,7 +5,10 @@
   #(
       parameter integer MAX_PLATFORMS = 8      ,
       parameter integer MAX_DOORS     = 4      ,
-      parameter [10:0] PLAYER_H       = 11'd4
+      parameter integer MAX_ENEMIES   = 8      ,
+      parameter [10:0]  PLAYER_H      = 11'd4  ,
+      parameter [10:0]  ENEMY_W       = 11'd2  ,
+      parameter [10:0]  ENEMY_H       = 11'd3
   )
   (
       output wire [10:0] LEVEL_W      ,
@@ -25,8 +28,15 @@
       output wire [MAX_DOORS*4-1:0]  DOOR_TARGET_LEVEL_BUS ,
       output wire [MAX_DOORS*2-1:0]  DOOR_TARGET_ENTRY_BUS ,
 
-      output wire [10:0] ENEMY0_START_X ,
-      output wire [10:0] ENEMY0_START_Y ,
+      output wire [7:0]  ENEMY_COUNT         ,
+      output wire [MAX_ENEMIES*4-1:0]  ENEMY_TYPE_BUS      ,
+      output wire [MAX_ENEMIES*11-1:0] ENEMY_START_X_BUS   ,
+      output wire [MAX_ENEMIES*11-1:0] ENEMY_START_Y_BUS   ,
+      output wire [MAX_ENEMIES*2-1:0]  ENEMY_START_DIR_BUS ,
+      output wire [MAX_ENEMIES*11-1:0] ENEMY_ANCHOR_X_BUS  ,
+      output wire [MAX_ENEMIES*11-1:0] ENEMY_ANCHOR_Y_BUS  ,
+      output wire [MAX_ENEMIES*11-1:0] ENEMY_ANCHOR_W_BUS  ,
+      output wire [MAX_ENEMIES*11-1:0] ENEMY_ANCHOR_H_BUS  ,
 
       output wire [10:0] SPAWN_LEFT_X   ,
       output wire [10:0] SPAWN_LEFT_Y   ,
@@ -37,6 +47,9 @@
       output wire [10:0] SPAWN_BOTTOM_X ,
       output wire [10:0] SPAWN_BOTTOM_Y
   );
+
+  localparam [3:0] TYPE_FLOOR_BOUNCE  = 4'd1 ;
+  localparam [3:0] TYPE_PLATFORM_LOOP = 4'd2 ;
 
   localparam [10:0] LEVEL_W_LOCAL = 11'd60 ;
   localparam [10:0] LEVEL_H_LOCAL = 11'd20 ;
@@ -61,9 +74,11 @@
   localparam [10:0] D0_W    = 11'd2  ;
   localparam [10:0] D0_H    = 11'd3  ;
 
-  // przeciwnik stoi na pod≥odze i jeüdzi po levelu
   localparam [10:0] E0_X    = 11'd22 ;
-  localparam [10:0] E0_Y    = 11'd14 ;
+  localparam [10:0] E0_Y    = FLOOR_Y - ENEMY_H ;
+
+  localparam [10:0] E1_X    = P0_X ;
+  localparam [10:0] E1_Y    = P0_Y - ENEMY_H ;
 
   assign LEVEL_W = LEVEL_W_LOCAL ;
   assign LEVEL_H = LEVEL_H_LOCAL ;
@@ -130,17 +145,64 @@
       2'd0
   };
 
-  assign ENEMY0_START_X = E0_X ;
-  assign ENEMY0_START_Y = E0_Y ;
+  assign ENEMY_COUNT = 8'd2 ;
 
-  assign SPAWN_LEFT_X   = 11'd2  ;
+  assign ENEMY_TYPE_BUS = {
+      {(MAX_ENEMIES-2)*4{1'b0}} ,
+      TYPE_PLATFORM_LOOP ,
+      TYPE_FLOOR_BOUNCE
+  };
+
+  assign ENEMY_START_X_BUS = {
+      {(MAX_ENEMIES-2)*11{1'b0}} ,
+      E1_X ,
+      E0_X
+  };
+
+  assign ENEMY_START_Y_BUS = {
+      {(MAX_ENEMIES-2)*11{1'b0}} ,
+      E1_Y ,
+      E0_Y
+  };
+
+  assign ENEMY_START_DIR_BUS = {
+      {(MAX_ENEMIES-2)*2{1'b0}} ,
+      2'd0 ,
+      2'd0
+  };
+
+  assign ENEMY_ANCHOR_X_BUS = {
+      {(MAX_ENEMIES-2)*11{1'b0}} ,
+      P0_X ,
+      11'd0
+  };
+
+  assign ENEMY_ANCHOR_Y_BUS = {
+      {(MAX_ENEMIES-2)*11{1'b0}} ,
+      P0_Y ,
+      11'd0
+  };
+
+  assign ENEMY_ANCHOR_W_BUS = {
+      {(MAX_ENEMIES-2)*11{1'b0}} ,
+      P0_W ,
+      11'd0
+  };
+
+  assign ENEMY_ANCHOR_H_BUS = {
+      {(MAX_ENEMIES-2)*11{1'b0}} ,
+      P0_H ,
+      11'd0
+  };
+
+  assign SPAWN_LEFT_X   = 11'd2 ;
   assign SPAWN_LEFT_Y   = FLOOR_Y - PLAYER_H ;
 
   assign SPAWN_RIGHT_X  = 11'd54 ;
   assign SPAWN_RIGHT_Y  = FLOOR_Y - PLAYER_H ;
 
   assign SPAWN_TOP_X    = 11'd30 ;
-  assign SPAWN_TOP_Y    = 11'd2  ;
+  assign SPAWN_TOP_Y    = 11'd2 ;
 
   assign SPAWN_BOTTOM_X = 11'd30 ;
   assign SPAWN_BOTTOM_Y = FLOOR_Y - PLAYER_H ;

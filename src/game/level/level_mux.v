@@ -5,7 +5,10 @@
   #(
       parameter integer MAX_PLATFORMS = 8      ,
       parameter integer MAX_DOORS     = 4      ,
-      parameter [10:0] PLAYER_H       = 11'd4
+      parameter integer MAX_ENEMIES   = 8      ,
+      parameter [10:0]  PLAYER_H      = 11'd4  ,
+      parameter [10:0]  ENEMY_W       = 11'd2  ,
+      parameter [10:0]  ENEMY_H       = 11'd3
   )
   (
       input  wire [3:0] LEVEL_ID      ,
@@ -27,8 +30,15 @@
       output reg  [MAX_DOORS*4-1:0]  DOOR_TARGET_LEVEL_BUS ,
       output reg  [MAX_DOORS*2-1:0]  DOOR_TARGET_ENTRY_BUS ,
 
-      output reg  [10:0] ENEMY0_START_X ,
-      output reg  [10:0] ENEMY0_START_Y ,
+      output reg  [7:0]  ENEMY_COUNT         ,
+      output reg  [MAX_ENEMIES*4-1:0]  ENEMY_TYPE_BUS      ,
+      output reg  [MAX_ENEMIES*11-1:0] ENEMY_START_X_BUS   ,
+      output reg  [MAX_ENEMIES*11-1:0] ENEMY_START_Y_BUS   ,
+      output reg  [MAX_ENEMIES*2-1:0]  ENEMY_START_DIR_BUS ,
+      output reg  [MAX_ENEMIES*11-1:0] ENEMY_ANCHOR_X_BUS  ,
+      output reg  [MAX_ENEMIES*11-1:0] ENEMY_ANCHOR_Y_BUS  ,
+      output reg  [MAX_ENEMIES*11-1:0] ENEMY_ANCHOR_W_BUS  ,
+      output reg  [MAX_ENEMIES*11-1:0] ENEMY_ANCHOR_H_BUS  ,
 
       output reg  [10:0] SPAWN_LEFT_X   ,
       output reg  [10:0] SPAWN_LEFT_Y   ,
@@ -76,10 +86,29 @@
   wire [MAX_DOORS*2-1:0]  l0_dte ;
   wire [MAX_DOORS*2-1:0]  l1_dte ;
 
-  wire [10:0] l0_e0x ;
-  wire [10:0] l0_e0y ;
-  wire [10:0] l1_e0x ;
-  wire [10:0] l1_e0y ;
+  wire [7:0]  l0_enemy_count ;
+  wire [7:0]  l1_enemy_count ;
+
+  wire [MAX_ENEMIES*4-1:0]  l0_enemy_type_bus ;
+  wire [MAX_ENEMIES*4-1:0]  l1_enemy_type_bus ;
+
+  wire [MAX_ENEMIES*11-1:0] l0_enemy_start_x_bus ;
+  wire [MAX_ENEMIES*11-1:0] l0_enemy_start_y_bus ;
+  wire [MAX_ENEMIES*11-1:0] l1_enemy_start_x_bus ;
+  wire [MAX_ENEMIES*11-1:0] l1_enemy_start_y_bus ;
+
+  wire [MAX_ENEMIES*2-1:0]  l0_enemy_start_dir_bus ;
+  wire [MAX_ENEMIES*2-1:0]  l1_enemy_start_dir_bus ;
+
+  wire [MAX_ENEMIES*11-1:0] l0_enemy_anchor_x_bus ;
+  wire [MAX_ENEMIES*11-1:0] l0_enemy_anchor_y_bus ;
+  wire [MAX_ENEMIES*11-1:0] l0_enemy_anchor_w_bus ;
+  wire [MAX_ENEMIES*11-1:0] l0_enemy_anchor_h_bus ;
+
+  wire [MAX_ENEMIES*11-1:0] l1_enemy_anchor_x_bus ;
+  wire [MAX_ENEMIES*11-1:0] l1_enemy_anchor_y_bus ;
+  wire [MAX_ENEMIES*11-1:0] l1_enemy_anchor_w_bus ;
+  wire [MAX_ENEMIES*11-1:0] l1_enemy_anchor_h_bus ;
 
   wire [10:0] l0_slx ;
   wire [10:0] l0_sly ;
@@ -101,142 +130,176 @@
 
   level0_data
   #(
-      .MAX_PLATFORMS ( MAX_PLATFORMS ) ,
-      .MAX_DOORS     ( MAX_DOORS     ) ,
-      .PLAYER_H      ( PLAYER_H      )
+      .MAX_PLATFORMS  ( MAX_PLATFORMS ) ,
+      .MAX_DOORS      ( MAX_DOORS     ) ,
+      .MAX_ENEMIES    ( MAX_ENEMIES   ) ,
+      .PLAYER_H       ( PLAYER_H      ) ,
+      .ENEMY_W        ( ENEMY_W       ) ,
+      .ENEMY_H        ( ENEMY_H       )
   )
   u_level0_data
   (
-      .LEVEL_W               ( l0_level_w ) ,
-      .LEVEL_H               ( l0_level_h ) ,
+      .LEVEL_W               ( l0_level_w             ) ,
+      .LEVEL_H               ( l0_level_h             ) ,
 
-      .PLAT_COUNT            ( l0_count   ) ,
-      .PLAT_X_BUS            ( l0_x       ) ,
-      .PLAT_Y_BUS            ( l0_y       ) ,
-      .PLAT_W_BUS            ( l0_w       ) ,
-      .PLAT_H_BUS            ( l0_h       ) ,
+      .PLAT_COUNT            ( l0_count               ) ,
+      .PLAT_X_BUS            ( l0_x                   ) ,
+      .PLAT_Y_BUS            ( l0_y                   ) ,
+      .PLAT_W_BUS            ( l0_w                   ) ,
+      .PLAT_H_BUS            ( l0_h                   ) ,
 
-      .DOOR_COUNT            ( l0_dcount  ) ,
-      .DOOR_X_BUS            ( l0_dx      ) ,
-      .DOOR_Y_BUS            ( l0_dy      ) ,
-      .DOOR_W_BUS            ( l0_dw      ) ,
-      .DOOR_H_BUS            ( l0_dh      ) ,
-      .DOOR_TARGET_LEVEL_BUS ( l0_dtl     ) ,
-      .DOOR_TARGET_ENTRY_BUS ( l0_dte     ) ,
+      .DOOR_COUNT            ( l0_dcount              ) ,
+      .DOOR_X_BUS            ( l0_dx                  ) ,
+      .DOOR_Y_BUS            ( l0_dy                  ) ,
+      .DOOR_W_BUS            ( l0_dw                  ) ,
+      .DOOR_H_BUS            ( l0_dh                  ) ,
+      .DOOR_TARGET_LEVEL_BUS ( l0_dtl                 ) ,
+      .DOOR_TARGET_ENTRY_BUS ( l0_dte                 ) ,
 
-      .ENEMY0_START_X        ( l0_e0x     ) ,
-      .ENEMY0_START_Y        ( l0_e0y     ) ,
+      .ENEMY_COUNT           ( l0_enemy_count         ) ,
+      .ENEMY_TYPE_BUS        ( l0_enemy_type_bus      ) ,
+      .ENEMY_START_X_BUS     ( l0_enemy_start_x_bus   ) ,
+      .ENEMY_START_Y_BUS     ( l0_enemy_start_y_bus   ) ,
+      .ENEMY_START_DIR_BUS   ( l0_enemy_start_dir_bus ) ,
+      .ENEMY_ANCHOR_X_BUS    ( l0_enemy_anchor_x_bus  ) ,
+      .ENEMY_ANCHOR_Y_BUS    ( l0_enemy_anchor_y_bus  ) ,
+      .ENEMY_ANCHOR_W_BUS    ( l0_enemy_anchor_w_bus  ) ,
+      .ENEMY_ANCHOR_H_BUS    ( l0_enemy_anchor_h_bus  ) ,
 
-      .SPAWN_LEFT_X          ( l0_slx     ) ,
-      .SPAWN_LEFT_Y          ( l0_sly     ) ,
-      .SPAWN_RIGHT_X         ( l0_srx     ) ,
-      .SPAWN_RIGHT_Y         ( l0_sry     ) ,
-      .SPAWN_TOP_X           ( l0_stx     ) ,
-      .SPAWN_TOP_Y           ( l0_sty     ) ,
-      .SPAWN_BOTTOM_X        ( l0_sbx     ) ,
-      .SPAWN_BOTTOM_Y        ( l0_sby     )
+      .SPAWN_LEFT_X          ( l0_slx                 ) ,
+      .SPAWN_LEFT_Y          ( l0_sly                 ) ,
+      .SPAWN_RIGHT_X         ( l0_srx                 ) ,
+      .SPAWN_RIGHT_Y         ( l0_sry                 ) ,
+      .SPAWN_TOP_X           ( l0_stx                 ) ,
+      .SPAWN_TOP_Y           ( l0_sty                 ) ,
+      .SPAWN_BOTTOM_X        ( l0_sbx                 ) ,
+      .SPAWN_BOTTOM_Y        ( l0_sby                 )
   );
 
   level1_data
   #(
-      .MAX_PLATFORMS ( MAX_PLATFORMS ) ,
-      .MAX_DOORS     ( MAX_DOORS     ) ,
-      .PLAYER_H      ( PLAYER_H      )
+      .MAX_PLATFORMS  ( MAX_PLATFORMS ) ,
+      .MAX_DOORS      ( MAX_DOORS     ) ,
+      .MAX_ENEMIES    ( MAX_ENEMIES   ) ,
+      .PLAYER_H       ( PLAYER_H      ) ,
+      .ENEMY_W        ( ENEMY_W       ) ,
+      .ENEMY_H        ( ENEMY_H       )
   )
   u_level1_data
   (
-      .LEVEL_W               ( l1_level_w ) ,
-      .LEVEL_H               ( l1_level_h ) ,
+      .LEVEL_W               ( l1_level_w             ) ,
+      .LEVEL_H               ( l1_level_h             ) ,
 
-      .PLAT_COUNT            ( l1_count   ) ,
-      .PLAT_X_BUS            ( l1_x       ) ,
-      .PLAT_Y_BUS            ( l1_y       ) ,
-      .PLAT_W_BUS            ( l1_w       ) ,
-      .PLAT_H_BUS            ( l1_h       ) ,
+      .PLAT_COUNT            ( l1_count               ) ,
+      .PLAT_X_BUS            ( l1_x                   ) ,
+      .PLAT_Y_BUS            ( l1_y                   ) ,
+      .PLAT_W_BUS            ( l1_w                   ) ,
+      .PLAT_H_BUS            ( l1_h                   ) ,
 
-      .DOOR_COUNT            ( l1_dcount  ) ,
-      .DOOR_X_BUS            ( l1_dx      ) ,
-      .DOOR_Y_BUS            ( l1_dy      ) ,
-      .DOOR_W_BUS            ( l1_dw      ) ,
-      .DOOR_H_BUS            ( l1_dh      ) ,
-      .DOOR_TARGET_LEVEL_BUS ( l1_dtl     ) ,
-      .DOOR_TARGET_ENTRY_BUS ( l1_dte     ) ,
+      .DOOR_COUNT            ( l1_dcount              ) ,
+      .DOOR_X_BUS            ( l1_dx                  ) ,
+      .DOOR_Y_BUS            ( l1_dy                  ) ,
+      .DOOR_W_BUS            ( l1_dw                  ) ,
+      .DOOR_H_BUS            ( l1_dh                  ) ,
+      .DOOR_TARGET_LEVEL_BUS ( l1_dtl                 ) ,
+      .DOOR_TARGET_ENTRY_BUS ( l1_dte                 ) ,
 
-      .ENEMY0_START_X        ( l1_e0x     ) ,
-      .ENEMY0_START_Y        ( l1_e0y     ) ,
+      .ENEMY_COUNT           ( l1_enemy_count         ) ,
+      .ENEMY_TYPE_BUS        ( l1_enemy_type_bus      ) ,
+      .ENEMY_START_X_BUS     ( l1_enemy_start_x_bus   ) ,
+      .ENEMY_START_Y_BUS     ( l1_enemy_start_y_bus   ) ,
+      .ENEMY_START_DIR_BUS   ( l1_enemy_start_dir_bus ) ,
+      .ENEMY_ANCHOR_X_BUS    ( l1_enemy_anchor_x_bus  ) ,
+      .ENEMY_ANCHOR_Y_BUS    ( l1_enemy_anchor_y_bus  ) ,
+      .ENEMY_ANCHOR_W_BUS    ( l1_enemy_anchor_w_bus  ) ,
+      .ENEMY_ANCHOR_H_BUS    ( l1_enemy_anchor_h_bus  ) ,
 
-      .SPAWN_LEFT_X          ( l1_slx     ) ,
-      .SPAWN_LEFT_Y          ( l1_sly     ) ,
-      .SPAWN_RIGHT_X         ( l1_srx     ) ,
-      .SPAWN_RIGHT_Y         ( l1_sry     ) ,
-      .SPAWN_TOP_X           ( l1_stx     ) ,
-      .SPAWN_TOP_Y           ( l1_sty     ) ,
-      .SPAWN_BOTTOM_X        ( l1_sbx     ) ,
-      .SPAWN_BOTTOM_Y        ( l1_sby     )
+      .SPAWN_LEFT_X          ( l1_slx                 ) ,
+      .SPAWN_LEFT_Y          ( l1_sly                 ) ,
+      .SPAWN_RIGHT_X         ( l1_srx                 ) ,
+      .SPAWN_RIGHT_Y         ( l1_sry                 ) ,
+      .SPAWN_TOP_X           ( l1_stx                 ) ,
+      .SPAWN_TOP_Y           ( l1_sty                 ) ,
+      .SPAWN_BOTTOM_X        ( l1_sbx                 ) ,
+      .SPAWN_BOTTOM_Y        ( l1_sby                 )
   );
 
   always @(*) begin
       case (LEVEL_ID)
           4'd1 : begin
-              LEVEL_W               = l1_level_w ;
-              LEVEL_H               = l1_level_h ;
+              LEVEL_W               = l1_level_w             ;
+              LEVEL_H               = l1_level_h             ;
 
-              PLAT_COUNT            = l1_count   ;
-              PLAT_X_BUS            = l1_x       ;
-              PLAT_Y_BUS            = l1_y       ;
-              PLAT_W_BUS            = l1_w       ;
-              PLAT_H_BUS            = l1_h       ;
+              PLAT_COUNT            = l1_count               ;
+              PLAT_X_BUS            = l1_x                   ;
+              PLAT_Y_BUS            = l1_y                   ;
+              PLAT_W_BUS            = l1_w                   ;
+              PLAT_H_BUS            = l1_h                   ;
 
-              DOOR_COUNT            = l1_dcount  ;
-              DOOR_X_BUS            = l1_dx      ;
-              DOOR_Y_BUS            = l1_dy      ;
-              DOOR_W_BUS            = l1_dw      ;
-              DOOR_H_BUS            = l1_dh      ;
-              DOOR_TARGET_LEVEL_BUS = l1_dtl     ;
-              DOOR_TARGET_ENTRY_BUS = l1_dte     ;
+              DOOR_COUNT            = l1_dcount              ;
+              DOOR_X_BUS            = l1_dx                  ;
+              DOOR_Y_BUS            = l1_dy                  ;
+              DOOR_W_BUS            = l1_dw                  ;
+              DOOR_H_BUS            = l1_dh                  ;
+              DOOR_TARGET_LEVEL_BUS = l1_dtl                 ;
+              DOOR_TARGET_ENTRY_BUS = l1_dte                 ;
 
-              ENEMY0_START_X        = l1_e0x     ;
-              ENEMY0_START_Y        = l1_e0y     ;
+              ENEMY_COUNT           = l1_enemy_count         ;
+              ENEMY_TYPE_BUS        = l1_enemy_type_bus      ;
+              ENEMY_START_X_BUS     = l1_enemy_start_x_bus   ;
+              ENEMY_START_Y_BUS     = l1_enemy_start_y_bus   ;
+              ENEMY_START_DIR_BUS   = l1_enemy_start_dir_bus ;
+              ENEMY_ANCHOR_X_BUS    = l1_enemy_anchor_x_bus  ;
+              ENEMY_ANCHOR_Y_BUS    = l1_enemy_anchor_y_bus  ;
+              ENEMY_ANCHOR_W_BUS    = l1_enemy_anchor_w_bus  ;
+              ENEMY_ANCHOR_H_BUS    = l1_enemy_anchor_h_bus  ;
 
-              SPAWN_LEFT_X          = l1_slx     ;
-              SPAWN_LEFT_Y          = l1_sly     ;
-              SPAWN_RIGHT_X         = l1_srx     ;
-              SPAWN_RIGHT_Y         = l1_sry     ;
-              SPAWN_TOP_X           = l1_stx     ;
-              SPAWN_TOP_Y           = l1_sty     ;
-              SPAWN_BOTTOM_X        = l1_sbx     ;
-              SPAWN_BOTTOM_Y        = l1_sby     ;
+              SPAWN_LEFT_X          = l1_slx                 ;
+              SPAWN_LEFT_Y          = l1_sly                 ;
+              SPAWN_RIGHT_X         = l1_srx                 ;
+              SPAWN_RIGHT_Y         = l1_sry                 ;
+              SPAWN_TOP_X           = l1_stx                 ;
+              SPAWN_TOP_Y           = l1_sty                 ;
+              SPAWN_BOTTOM_X        = l1_sbx                 ;
+              SPAWN_BOTTOM_Y        = l1_sby                 ;
           end
 
           default : begin
-              LEVEL_W               = l0_level_w ;
-              LEVEL_H               = l0_level_h ;
+              LEVEL_W               = l0_level_w             ;
+              LEVEL_H               = l0_level_h             ;
 
-              PLAT_COUNT            = l0_count   ;
-              PLAT_X_BUS            = l0_x       ;
-              PLAT_Y_BUS            = l0_y       ;
-              PLAT_W_BUS            = l0_w       ;
-              PLAT_H_BUS            = l0_h       ;
+              PLAT_COUNT            = l0_count               ;
+              PLAT_X_BUS            = l0_x                   ;
+              PLAT_Y_BUS            = l0_y                   ;
+              PLAT_W_BUS            = l0_w                   ;
+              PLAT_H_BUS            = l0_h                   ;
 
-              DOOR_COUNT            = l0_dcount  ;
-              DOOR_X_BUS            = l0_dx      ;
-              DOOR_Y_BUS            = l0_dy      ;
-              DOOR_W_BUS            = l0_dw      ;
-              DOOR_H_BUS            = l0_dh      ;
-              DOOR_TARGET_LEVEL_BUS = l0_dtl     ;
-              DOOR_TARGET_ENTRY_BUS = l0_dte     ;
+              DOOR_COUNT            = l0_dcount              ;
+              DOOR_X_BUS            = l0_dx                  ;
+              DOOR_Y_BUS            = l0_dy                  ;
+              DOOR_W_BUS            = l0_dw                  ;
+              DOOR_H_BUS            = l0_dh                  ;
+              DOOR_TARGET_LEVEL_BUS = l0_dtl                 ;
+              DOOR_TARGET_ENTRY_BUS = l0_dte                 ;
 
-              ENEMY0_START_X        = l0_e0x     ;
-              ENEMY0_START_Y        = l0_e0y     ;
+              ENEMY_COUNT           = l0_enemy_count         ;
+              ENEMY_TYPE_BUS        = l0_enemy_type_bus      ;
+              ENEMY_START_X_BUS     = l0_enemy_start_x_bus   ;
+              ENEMY_START_Y_BUS     = l0_enemy_start_y_bus   ;
+              ENEMY_START_DIR_BUS   = l0_enemy_start_dir_bus ;
+              ENEMY_ANCHOR_X_BUS    = l0_enemy_anchor_x_bus  ;
+              ENEMY_ANCHOR_Y_BUS    = l0_enemy_anchor_y_bus  ;
+              ENEMY_ANCHOR_W_BUS    = l0_enemy_anchor_w_bus  ;
+              ENEMY_ANCHOR_H_BUS    = l0_enemy_anchor_h_bus  ;
 
-              SPAWN_LEFT_X          = l0_slx     ;
-              SPAWN_LEFT_Y          = l0_sly     ;
-              SPAWN_RIGHT_X         = l0_srx     ;
-              SPAWN_RIGHT_Y         = l0_sry     ;
-              SPAWN_TOP_X           = l0_stx     ;
-              SPAWN_TOP_Y           = l0_sty     ;
-              SPAWN_BOTTOM_X        = l0_sbx     ;
-              SPAWN_BOTTOM_Y        = l0_sby     ;
+              SPAWN_LEFT_X          = l0_slx                 ;
+              SPAWN_LEFT_Y          = l0_sly                 ;
+              SPAWN_RIGHT_X         = l0_srx                 ;
+              SPAWN_RIGHT_Y         = l0_sry                 ;
+              SPAWN_TOP_X           = l0_stx                 ;
+              SPAWN_TOP_Y           = l0_sty                 ;
+              SPAWN_BOTTOM_X        = l0_sbx                 ;
+              SPAWN_BOTTOM_Y        = l0_sby                 ;
           end
       endcase
   end
